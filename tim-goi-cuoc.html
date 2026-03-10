@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tra Cứu Gói Cước VNPT Hà Nội 2025</title>
+  <meta name="description"
+    content="Tra cứu và so sánh gói cước Internet, Truyền hình, Combo VNPT Hà Nội 2025. Tìm gói phù hợp theo nhu cầu và ngân sách của bạn.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ─── NAVBAR ─────────────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a class="logo" href="#">
+        <div class="logo-icon">V</div>
+        <div>
+          <div class="logo-text"><span>VNPT</span> Gói Cước</div>
+        </div>
+      </a>
+      <div class="navbar-sub">Hà Nội · Bảng giá 2025</div>
+      <div class="navbar-contact">
+        <span>📞 Hotline:</span>
+        <a href="tel:18001166">1800.1166</a>
+        <span>|</span>
+        <a href="tel:0855851166">085.585.1166</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ───────────────────────────────────────────────── -->
+  <div class="hero">
+    <div class="hero-badge">
+      ✨ Bảng giá chính thức · Cập nhật 2025
+    </div>
+    <h1>Tìm Gói Cước VNPT<br>Phù Hợp Với Bạn</h1>
+    <p>Tra cứu Internet, Truyền hình &amp; Combo VNPT Hà Nội. Chọn theo gói hoặc để chúng tôi gợi ý dựa trên nhu cầu
+      thực tế của bạn.</p>
+  </div>
+
+  <!-- ─── MAIN CONTENT ────────────────────────────────────────── -->
+  <main class="tabs-wrapper">
+
+    <!-- Tabs Navigation -->
+    <div class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab1" id="tab-btn-1">
+        <span class="tab-icon">🔍</span> Tìm theo Gói &amp; Giá
+      </button>
+      <button class="tab-btn" data-tab="tab2" id="tab-btn-2">
+        <span class="tab-icon">🎯</span> Gợi ý theo Nhu Cầu
+      </button>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+       TAB 1 – FILTER & LIST
+  ════════════════════════════════════════════════════════ -->
+    <div class="tab-panel active" id="tab1">
+
+      <!-- Filter -->
+      <div class="filter-section">
+        <h3>🔧 Bộ Lọc</h3>
+        <div class="filter-grid">
+
+          <div class="filter-field">
+            <label for="f-category">Loại gói cước</label>
+            <select id="f-category">
+              <option value="all">Tất cả loại</option>
+              <option value="home">🏠 Internet Hộ Gia Đình</option>
+              <option value="combo">🎬 Combo Internet + TV (HomeTV)</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label for="f-area">Khu vực</label>
+            <select id="f-area">
+              <option value="urban">🏙 Nội thành</option>
+              <option value="suburb">🌿 Ngoại thành</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label for="f-duration">Thời hạn thanh toán</label>
+            <select id="f-duration">
+              <option value="m1">1 tháng</option>
+              <option value="m6">6 tháng</option>
+              <option value="m12">12 tháng</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label for="f-speed">Tốc độ tối thiểu</label>
+            <input type="range" id="f-speed" min="0" max="2000" step="100" value="0">
+            <div class="range-display" id="speed-display">Tất cả</div>
+          </div>
+
+          <div class="filter-field">
+            <label for="f-price">Giá tối đa / tháng</label>
+            <input type="range" id="f-price" min="50000" max="5000000" step="50000" value="5000000">
+            <div class="range-display" id="price-display">Không giới hạn</div>
+          </div>
+
+        </div>
+
+        <!-- Feature toggles -->
+        <div class="section-title">Tính năng đặc biệt</div>
+        <div class="feature-toggles">
+          <div class="feat-toggle" data-feat="mesh">📶 Có Mesh WiFi</div>
+          <div class="feat-toggle" data-feat="tv">📺 Có Truyền hình</div>
+          <div class="feat-toggle" data-feat="camera">📷 Có Camera An Ninh</div>
+        </div>
+      </div>
+
+      <!-- Results bar -->
+      <div class="results-bar">
+        <div class="results-count" id="result-count">Đang tải...</div>
+        <div class="sort-group">
+          <label for="f-sort">Sắp xếp:</label>
+          <select id="f-sort">
+            <option value="price-asc">Giá tăng dần</option>
+            <option value="price-desc">Giá giảm dần</option>
+            <option value="speed-desc">Tốc độ cao nhất</option>
+            <option value="speed-asc">Tốc độ thấp nhất</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Package grid -->
+      <div class="packages-grid" id="packages-grid">
+        <!-- cards rendered by JS -->
+      </div>
+
+    </div><!-- /tab1 -->
+
+    <!-- ══════════════════════════════════════════════════════
+       TAB 2 – WIZARD
+  ════════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="tab2">
+      <div class="wizard-container">
+
+        <!-- Progress bar -->
+        <div class="wizard-progress" id="wizard-progress">
+          <div class="progress-info">
+            <span class="progress-label">Tiến trình</span>
+            <span class="progress-step">Bước <strong id="progress-step-cur">1</strong> / <strong
+                id="progress-step-tot">7</strong></span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+          <div class="step-dots" id="step-dots"></div>
+        </div>
+
+        <!-- Steps container -->
+        <div id="wizard-steps-container"></div>
+
+        <!-- Navigation (inside wizard steps flow) -->
+        <div class="wizard-nav" id="wizard-nav" style="margin-top:1.5rem;">
+          <button class="btn-prev" id="btn-prev" disabled>← Quay lại</button>
+          <button class="btn-next" id="btn-next">Tiếp theo →</button>
+        </div>
+
+        <!-- Results -->
+        <div class="recommendation-section" id="recommendation-section" style="display:none;">
+          <div class="rec-header">
+            <h2>🎯 Gợi ý gói phù hợp cho bạn</h2>
+            <p>Dựa trên nhu cầu bạn đã cung cấp, đây là các gói chúng tôi gợi ý:</p>
+          </div>
+          <div class="rec-grid" id="rec-grid"></div>
+          <div style="text-align:center;margin-top:2rem;">
+            <button class="btn-restart" id="btn-restart">🔄 Làm lại khảo sát</button>
+          </div>
+          <br>
+          <div style="text-align:center;margin-top:0.5rem;">
+            <p style="color:var(--text-muted);font-size:0.85rem;">Muốn xem thêm lựa chọn? Dùng <strong
+                style="color:var(--primary-light)">Tab "Tìm theo Gói &amp; Giá"</strong> để tùy chỉnh bộ lọc.</p>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /tab2 -->
+
+  </main>
+
+  <!-- ─── COMPARE BAR (sticky bottom) ───────────────────────── -->
+  <div class="compare-bar" id="compare-bar">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <span style="font-weight:700;color:#fff;font-size:0.9rem;">⚖️ So sánh gói (<span
+          id="compare-count">0</span>)</span>
+      <div class="compare-slots" id="compare-slots"></div>
+    </div>
+    <div class="compare-actions">
+      <button class="btn-compare" id="btn-do-compare">Xem so sánh →</button>
+      <button class="btn-clear-compare" id="btn-clear-compare">Xóa tất cả</button>
+    </div>
+  </div>
+
+  <!-- ─── MODAL – DETAIL ─────────────────────────────────────── -->
+  <div class="modal-overlay" id="modal-detail" role="dialog" aria-modal="true" aria-label="Chi tiết gói cước">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Chi tiết gói</h2>
+        <button class="modal-close" aria-label="Đóng">✕</button>
+      </div>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ─── MODAL – COMPARE ────────────────────────────────────── -->
+  <div class="modal-overlay compare-modal" id="modal-compare" role="dialog" aria-modal="true"
+    aria-label="So sánh gói cước">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>⚖️ So sánh gói cước</h2>
+        <button class="modal-close" aria-label="Đóng">✕</button>
+      </div>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ──────────────────────────────────────────────── -->
+  <footer class="footer">
+    <p>
+      📞 <strong>Tư vấn & Đăng ký:</strong>
+      <a href="tel:0855851166">085.585.1166</a> &nbsp;|&nbsp;
+      <a href="tel:18001166">1800.1166 (miễn phí)</a>
+      &nbsp;|&nbsp;
+      <a href="https://banhangvnpt.vn" target="_blank" rel="noopener">banhangvnpt.vn</a>
+    </p>
+    <p style="margin-top:0.5rem;">Ứng dụng tra cứu gói cước VNPT Hà Nội · Bảng giá áp dụng từ 01/04/2025</p>
+    <p style="margin-top:0.25rem;font-size:0.75rem;">Giá đã bao gồm VAT · Khuyến mại áp dụng cho thuê bao lắp đặt mới ·
+      Không áp dụng tại một số tòa nhà có chính sách giá riêng</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
