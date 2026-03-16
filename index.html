@@ -549,7 +549,16 @@
         <h2 class="text-3xl md:text-5xl font-heading mb-6 uppercase">Sẵn Sàng Trải Nghiệm Internet Siêu Tốc?</h2>
         <p class="text-lg text-white/80 mb-8 max-w-2xl mx-auto">Liên hệ ngay để được tư vấn miễn phí và nhận ưu đãi tốt
             nhất trong hôm nay.</p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <!-- Form Đăng Ký Tư Vấn -->
+        <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-3 w-full mb-10 text-left" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã để lại thông tin. Chúng tôi sẽ liên hệ trong thời gian sớm nhất!'); this.reset();">
+            <input type="tel" name="phone" required placeholder="Nhập số liên hệ..." pattern="[0-9]{10,11}" autocomplete="off"
+                class="flex-1 px-6 py-4 rounded-full text-darkText focus:outline-none focus:ring-4 focus:ring-accent/50 shadow-lg font-medium" />
+            <button type="submit" 
+                class="bg-accent hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl outline-none hover:shadow-2xl transition-transform hover:-translate-y-1 whitespace-nowrap">
+                Tư vấn cho tôi
+            </button>
+        </form>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
             <a href="tel:0822036382"
                 class="bg-accent hover:opacity-90 text-white px-10 py-4 rounded-full font-bold text-xl shadow-xl transition-transform hover:-translate-y-1 inline-flex items-center justify-center gap-2">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
