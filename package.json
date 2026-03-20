@@ -1,0 +1,22 @@
+{
+  "name": "tim-go-vnpt-astro",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.2",
+    "@astrojs/sitemap": "^3.7.1",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.0.7",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3"
+  }
+}

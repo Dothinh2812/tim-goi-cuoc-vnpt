@@ -1,0 +1,77 @@
+---
+import { getGtagId, getSiteUrl, siteConfig } from '../config/site';
+import { shouldNoIndex, toAbsoluteUrl } from '../lib/seo';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonicalPath?: string;
+  bodyClass?: string;
+  structuredData?: Array<Record<string, unknown>>;
+}
+
+const {
+  title,
+  description = '',
+  canonicalPath = Astro.url.pathname,
+  bodyClass = '',
+  structuredData = [],
+} = Astro.props;
+
+const gtagId = getGtagId();
+const siteUrl = getSiteUrl();
+const noIndex = shouldNoIndex();
+const canonicalUrl = siteUrl ? toAbsoluteUrl(canonicalPath) : '';
+const ogType = canonicalPath.startsWith('/blog-content/') ? 'article' : 'website';
+---
+
+<!doctype html>
+<html lang="vi" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    {noIndex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <meta name="robots" content="index, follow" />
+    )}
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    {structuredData.map((entry) => (
+      <script type="application/ld+json" set:html={JSON.stringify(entry)} />
+    ))}
+    {gtagId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`}></script>
+        <script is:inline define:vars={{ gtagId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', gtagId);
+        </script>
+      </>
+    )}
+  </head>
+  <body class:list={['min-h-screen bg-surface text-darkText antialiased', bodyClass]}>
+    <slot />
+  </body>
+</html>

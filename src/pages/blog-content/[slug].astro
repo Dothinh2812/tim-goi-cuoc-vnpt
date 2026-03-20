@@ -1,0 +1,108 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FloatingCtas from '../../components/FloatingCtas.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import { siteConfig } from '../../config/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const canonicalPath = `/blog-content/${post.data.slug}.html`;
+const canonicalUrl = Astro.site ? new URL(canonicalPath, Astro.site).toString() : canonicalPath;
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.data.title,
+    description: post.data.description,
+    datePublished: post.data.pubDate.toISOString().slice(0, 10),
+    dateModified: post.data.updatedDate.toISOString().slice(0, 10),
+    author: {
+      '@type': 'Person',
+      name: siteConfig.employeeName,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: Astro.site ? new URL('/logo-vnpt.png', Astro.site).toString() : '/logo-vnpt.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': canonicalUrl,
+    },
+    keywords: post.data.keywords.join(', '),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Trang chủ',
+        item: Astro.site ? new URL('/', Astro.site).toString() : '/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: Astro.site ? new URL('/blog.html', Astro.site).toString() : '/blog.html',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.data.title,
+        item: canonicalUrl,
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={`${post.data.title} | VNPT Blog`}
+  description={post.data.description}
+  canonicalPath={canonicalPath}
+  structuredData={structuredData}
+>
+  <SiteHeader currentPath="/blog.html" />
+
+  <main class="max-w-4xl mx-auto px-4 pt-28 pb-14">
+    <Breadcrumbs
+      items={[
+        { href: '/', label: 'Trang chủ' },
+        { href: '/blog.html', label: 'Blog' },
+        { label: post.data.title },
+      ]}
+    />
+
+    <div class="mb-5">
+      <p class="text-sm text-darkText/60 mt-2">Chuyên mục: {post.data.category}</p>
+    </div>
+
+    <article class="bg-white border border-primary/10 rounded-2xl p-6 md:p-8 space-y-2">
+      <header class="mb-6">
+        <p class="text-sm font-semibold text-secondary mb-2">{post.data.weekLabel}</p>
+        <h1 class="text-3xl md:text-4xl font-bold text-darkText mb-4">{post.data.title}</h1>
+        <p class="text-darkText/70">{post.data.description}</p>
+      </header>
+      <Content />
+    </article>
+  </main>
+
+  <SiteFooter />
+  <FloatingCtas />
+</BaseLayout>

@@ -1,0 +1,39 @@
+---
+import { siteConfig } from '../config/site';
+---
+
+<footer class="bg-primary text-white py-8 px-4 mt-12">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-wrap justify-center gap-3 text-sm text-white/80 mb-4">
+      {siteConfig.footerLinks.map((link, index) => (
+        <>
+          <a href={link.href} class="hover:text-white transition-colors">{link.label}</a>
+          {index < siteConfig.footerLinks.length - 1 && <span class="text-white/30">|</span>}
+        </>
+      ))}
+    </div>
+    <div class="text-center text-white/60 text-xs leading-relaxed space-y-1">
+      <p>
+        Website kênh đại lý/nhân viên VNPT. Quản lý bởi: {siteConfig.employeeName} - Mã NV:
+        {siteConfig.employeeCode}
+      </p>
+      <p>
+        Địa chỉ: {siteConfig.address} | Email:
+        <a href={`mailto:${siteConfig.email}`} class="hover:text-white transition-colors">
+          {siteConfig.email}
+        </a>
+      </p>
+      <p>
+        {siteConfig.legalDisclaimer} Website chính thức:
+        <a
+          href={siteConfig.officialWebsite}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-white transition-colors"
+        >
+          {siteConfig.officialWebsite.replace('https://', '')}
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

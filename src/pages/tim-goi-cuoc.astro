@@ -1,0 +1,20 @@
+---
+import '../styles/package-finder.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegacyPage from '../components/LegacyPage.astro';
+import { readLegacyHtmlPage } from '../lib/legacy-html';
+
+const page = await readLegacyHtmlPage('tim-goi-cuoc.html');
+---
+
+<BaseLayout
+  title={page.title}
+  description={page.description}
+  canonicalPath="/tim-goi-cuoc.html"
+  bodyClass={page.bodyClass}
+>
+  <LegacyPage page={page} />
+  <script>
+    import '../scripts/package-finder.ts';
+  </script>
+</BaseLayout>

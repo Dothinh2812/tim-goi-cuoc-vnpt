@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegacyPage from '../components/LegacyPage.astro';
+import { readLegacyHtmlPage } from '../lib/legacy-html';
+
+const page = await readLegacyHtmlPage('faq.html');
+---
+
+<BaseLayout title={page.title} description={page.description} canonicalPath="/faq.html" bodyClass={page.bodyClass}>
+  <LegacyPage page={page} />
+</BaseLayout>

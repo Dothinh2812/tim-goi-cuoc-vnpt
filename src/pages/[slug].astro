@@ -1,0 +1,14 @@
+---
+import { ROOT_BLOG_REDIRECTS } from '../data/root-blog-redirects';
+
+export async function getStaticPaths() {
+  return Object.entries(ROOT_BLOG_REDIRECTS).map(([slug, destination]) => ({
+    params: { slug },
+    props: { destination },
+  }));
+}
+
+const { destination } = Astro.props;
+
+return Astro.redirect(destination, 308);
+---

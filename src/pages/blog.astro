@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import FloatingCtas from '../components/FloatingCtas.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data.order);
+const sections = posts.reduce(
+  (groups, post) => {
+    const existing = groups.find((group) => group.category === post.data.category);
+    if (existing) {
+      existing.posts.push(post);
+      return groups;
+    }
+
+    groups.push({
+      category: post.data.category,
+      posts: [post],
+    });
+    return groups;
+  },
+  [] as Array<{ category: string; posts: typeof posts }>,
+);
+---
+
+<BaseLayout
+  title="Blog Internet và WiFi | VNPT Hà Nội"
+  description="Tổng hợp bài viết kiến thức Internet, tối ưu WiFi, xử lý sự cố mạng và tư vấn gói cước theo nhu cầu."
+  canonicalPath="/blog.html"
+>
+  <SiteHeader currentPath="/blog.html" />
+
+  <header class="pt-32 pb-10 px-4 text-center max-w-5xl mx-auto">
+    <span class="inline-flex px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+      Blog chia sẻ kiến thức
+    </span>
+    <h1 class="text-4xl md:text-5xl font-heading text-darkText mt-4 mb-4">Cẩm nang Internet và WiFi</h1>
+    <p class="text-darkText/70 text-lg">
+      Toàn bộ bài viết SEO được sắp theo cụm chủ đề để dễ đọc, dễ tìm và dễ chuyển đổi.
+    </p>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
+    {sections.map((section) => (
+      <section class="mt-10">
+        <h2 class="text-2xl md:text-3xl font-heading text-darkText mb-5">{section.category}</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          {section.posts.map((post) => (
+            <article class="bg-white rounded-2xl p-6 border border-primary/10 shadow-sm hover:shadow-md transition-shadow">
+              <p class="text-xs font-semibold text-secondary mb-2">{post.data.weekLabel}</p>
+              <h3 class="text-xl font-heading text-darkText mb-2">{post.data.title}</h3>
+              <p class="text-darkText/70 mb-4">{post.data.excerpt}</p>
+              <a href={`/blog-content/${post.data.slug}.html`} class="text-primary font-bold hover:underline">
+                Đọc bài viết -&gt;
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+
+  <SiteFooter />
+  <FloatingCtas />
+</BaseLayout>

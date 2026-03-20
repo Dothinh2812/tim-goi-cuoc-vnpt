@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegacyPage from '../components/LegacyPage.astro';
+import { readLegacyHtmlPage } from '../lib/legacy-html';
+
+const page = await readLegacyHtmlPage('index.html');
+---
+
+<BaseLayout title={page.title} description={page.description} canonicalPath="/" bodyClass={page.bodyClass}>
+  <LegacyPage page={page} />
+  <script>
+    import '../scripts/lead-capture.ts';
+  </script>
+</BaseLayout>

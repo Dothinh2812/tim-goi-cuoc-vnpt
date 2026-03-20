@@ -1,0 +1,145 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/blog-bo-tri-wifi-nha-nhieu-tang.html",
+      "destination": "/blog-content/blog-bo-tri-wifi-nha-nhieu-tang.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-case-toi-uu-wifi-can-ho.html",
+      "destination": "/blog-content/blog-case-toi-uu-wifi-can-ho.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-cau-hinh-router-bao-mat.html",
+      "destination": "/blog-content/blog-cau-hinh-router-bao-mat.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-checklist-chat-luong-mang.html",
+      "destination": "/blog-content/blog-checklist-chat-luong-mang.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-checklist-tu-kiem-tra-mang.html",
+      "destination": "/blog-content/blog-checklist-tu-kiem-tra-mang.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-chon-goi-internet-doanh-nghiep-nho.html",
+      "destination": "/blog-content/blog-chon-goi-internet-doanh-nghiep-nho.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-chon-goi-internet-gia-dinh.html",
+      "destination": "/blog-content/blog-chon-goi-internet-gia-dinh.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-dau-hieu-dung-trom-wifi.html",
+      "destination": "/blog-content/blog-dau-hieu-dung-trom-wifi.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-do-toc-do-mang-dung-cach.html",
+      "destination": "/blog-content/blog-do-toc-do-mang-dung-cach.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-doi-mat-khau-wifi-an-toan.html",
+      "destination": "/blog-content/blog-doi-mat-khau-wifi-an-toan.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-faq-internet-wifi.html",
+      "destination": "/blog-content/blog-faq-internet-wifi.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-goi-internet-cho-camera.html",
+      "destination": "/blog-content/blog-goi-internet-cho-camera.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-goi-internet-cho-gaming.html",
+      "destination": "/blog-content/blog-goi-internet-cho-gaming.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-goi-internet-cho-livestream.html",
+      "destination": "/blog-content/blog-goi-internet-cho-livestream.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-goi-internet-hoc-online-lam-viec.html",
+      "destination": "/blog-content/blog-goi-internet-hoc-online-lam-viec.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-guest-wifi-gia-dinh.html",
+      "destination": "/blog-content/blog-guest-wifi-gia-dinh.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-khi-nao-can-nang-cap-goi-cuoc.html",
+      "destination": "/blog-content/blog-khi-nao-can-nang-cap-goi-cuoc.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-mang-cham-gio-cao-diem.html",
+      "destination": "/blog-content/blog-mang-cham-gio-cao-diem.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-meo-tang-toc-wifi.html",
+      "destination": "/blog-content/blog-meo-tang-toc-wifi.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-mesh-vs-repeater.html",
+      "destination": "/blog-content/blog-mesh-vs-repeater.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-sai-lam-khien-mang-cham.html",
+      "destination": "/blog-content/blog-sai-lam-khien-mang-cham.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-so-sanh-goi-theo-nhu-cau.html",
+      "destination": "/blog-content/blog-so-sanh-goi-theo-nhu-cau.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-toc-do-mang-mbps-ping-jitter.html",
+      "destination": "/blog-content/blog-toc-do-mang-mbps-ping-jitter.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-top-goi-ngoai-thanh-ha-noi.html",
+      "destination": "/blog-content/blog-top-goi-ngoai-thanh-ha-noi.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-top-goi-noi-thanh-ha-noi.html",
+      "destination": "/blog-content/blog-top-goi-noi-thanh-ha-noi.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-vi-tri-dat-modem-router.html",
+      "destination": "/blog-content/blog-vi-tri-dat-modem-router.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-wifi-24ghz-vs-5ghz.html",
+      "destination": "/blog-content/blog-wifi-24ghz-vs-5ghz.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog-wifi-song-manh-nhung-lag.html",
+      "destination": "/blog-content/blog-wifi-song-manh-nhung-lag.html",
+      "permanent": true
+    }
+  ]
+}

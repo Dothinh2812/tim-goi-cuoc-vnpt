@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@source "../../*.html";
+@source "../../blog-content/*.html";
+@source "../**/*.{astro,md,mdx,ts}";
+
+@theme {
+  --color-primary: #003399;
+  --color-secondary: #0099cc;
+  --color-accent: #ff6600;
+  --color-surface: #f5f7fa;
+  --color-darkText: #1a1a2e;
+  --font-body: "Open Sans", "Segoe UI", Arial, sans-serif;
+  --font-heading: "Helvetica Neue", Arial, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-darkText);
+  background: var(--color-surface);
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+a {
+  transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.card-shadow {
+  box-shadow: 0 10px 25px -5px rgba(0, 51, 153, 0.1), 0 8px 10px -6px rgba(0, 51, 153, 0.1);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #003399, #0099cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

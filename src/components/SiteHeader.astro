@@ -1,0 +1,39 @@
+---
+import { siteConfig } from '../config/site';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+---
+
+<nav class="fixed w-full z-50 glass-nav border-b border-primary/10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/logo-vnpt.png" alt="VNPT Logo" class="h-12 w-auto object-contain" />
+        <span class="font-heading text-xl font-bold text-primary">{siteConfig.name}</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-bold text-darkText/80">
+        {siteConfig.navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'hover:text-primary transition-colors',
+              currentPath === link.href && 'text-primary',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+      <a
+        href={`tel:${siteConfig.phoneRaw}`}
+        class="bg-accent text-white px-6 py-3 rounded-full font-bold shadow-lg shadow-accent/30 hover:opacity-90"
+      >
+        {siteConfig.phoneDisplay}
+      </a>
+    </div>
+  </div>
+</nav>
