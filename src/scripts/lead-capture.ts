@@ -65,15 +65,20 @@ async function submitLead(payload: ReturnType<typeof buildPayload>) {
     body: JSON.stringify(payload),
   });
 
+  const responseText = await response.text();
   let result: { status?: string; message?: string } | null = null;
   try {
-    result = await response.json();
+    result = responseText ? JSON.parse(responseText) : null;
   } catch {
     // Ignore parse errors and rely on HTTP status below.
   }
 
   if (!response.ok) {
-    throw new Error('request_failed');
+    const isAccessDenied =
+      response.status === 401 ||
+      response.status === 403 ||
+      /truy cap bi tu choi|ban can co quyen truy cap|access denied/i.test(responseText);
+    throw new Error(isAccessDenied ? 'access_denied' : `request_failed_${response.status}`);
   }
 
   if (result?.status && result.status !== 'success') {
@@ -122,8 +127,11 @@ function wireLeadForm() {
       form.reset();
       statusEl.textContent = 'Cam on ban. Chung toi se lien he trong thoi gian som nhat.';
       statusEl.style.display = 'block';
-    } catch {
-      statusEl.textContent = 'Gui thong tin that bai. Vui long thu lai hoac goi 0822 036 382.';
+    } catch (error) {
+      statusEl.textContent =
+        error instanceof Error && error.message === 'access_denied'
+          ? 'He thong tu van dang loi phan quyen. Vui long goi 0822 036 382 de duoc ho tro ngay.'
+          : 'Gui thong tin that bai. Vui long thu lai hoac goi 0822 036 382.';
       statusEl.style.display = 'block';
     } finally {
       if (submitBtn) {

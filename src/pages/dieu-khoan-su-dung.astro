@@ -1,16 +1,50 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LegacyPage from '../components/LegacyPage.astro';
-import { readLegacyHtmlPage } from '../lib/legacy-html';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import FloatingCtas from '../components/FloatingCtas.astro';
 
-const page = await readLegacyHtmlPage('dieu-khoan-su-dung.html');
+const title = "Điều khoản sử dụng - Đăng ký Internet VNPT Hà Nội";
+const description = "Điều khoản sử dụng website đăng ký dịch vụ Internet VNPT Hà Nội.";
 ---
 
-<BaseLayout
-  title={page.title}
-  description={page.description}
-  canonicalPath="/dieu-khoan-su-dung.html"
-  bodyClass={page.bodyClass}
->
-  <LegacyPage page={page} />
+<BaseLayout title={title} description={description} canonicalPath="/dieu-khoan-su-dung.html">
+  <SiteHeader />
+  
+  <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-heading text-darkText mb-8">Điều khoản sử dụng</h1>
+
+        <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-primary/5 space-y-8 text-darkText/80 leading-relaxed">
+            <p>Khi truy cập và sử dụng website, bạn đồng ý với các điều khoản sau:</p>
+
+            <!-- 1 -->
+            <div>
+                <h2 class="text-2xl font-heading text-darkText mb-4">1. Nội dung website</h2>
+                <p class="mb-3">Website cung cấp thông tin về các dịch vụ viễn thông và hỗ trợ khách hàng đăng ký dịch vụ tại khu vực Hà Nội.</p>
+                <p>Thông tin trên website được cung cấp với mục đích tham khảo và có thể thay đổi theo chính sách của nhà cung cấp dịch vụ.</p>
+            </div>
+
+            <!-- 2 -->
+            <div class="border-t border-gray-200 pt-6">
+                <h2 class="text-2xl font-heading text-darkText mb-4">2. Trách nhiệm của người dùng</h2>
+                <p class="mb-3">Người dùng cam kết cung cấp thông tin chính xác khi đăng ký dịch vụ trên website.</p>
+                <p>Chúng tôi không chịu trách nhiệm đối với các thông tin sai lệch do người dùng cung cấp.</p>
+            </div>
+
+            <!-- 3 -->
+            <div class="border-t border-gray-200 pt-6">
+                <h2 class="text-2xl font-heading text-darkText mb-4">3. Quyền hạn của website</h2>
+                <p>Chúng tôi có quyền cập nhật, chỉnh sửa hoặc thay đổi nội dung website mà không cần thông báo trước.</p>
+            </div>
+
+            <!-- 4 -->
+            <div class="border-t border-gray-200 pt-6">
+                <h2 class="text-2xl font-heading text-darkText mb-4">4. Giới hạn trách nhiệm</h2>
+                <p>Website này là kênh hỗ trợ đăng ký dịch vụ và <strong>không phải website chính thức</strong> của nhà cung cấp dịch vụ.</p>
+            </div>
+        </div>
+    </main>
+  
+  <SiteFooter />
+  <FloatingCtas />
 </BaseLayout>

@@ -1,16 +1,44 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LegacyPage from '../components/LegacyPage.astro';
-import { readLegacyHtmlPage } from '../lib/legacy-html';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import FloatingCtas from '../components/FloatingCtas.astro';
 
-const page = await readLegacyHtmlPage('gioi-thieu.html');
+const title = "Giới thiệu - Đăng ký Internet VNPT Hà Nội";
+const description = "Giới thiệu về dịch vụ hỗ trợ đăng ký lắp đặt Internet cáp quang VNPT tại Hà Nội.";
 ---
 
-<BaseLayout
-  title={page.title}
-  description={page.description}
-  canonicalPath="/gioi-thieu.html"
-  bodyClass={page.bodyClass}
->
-  <LegacyPage page={page} />
+<BaseLayout title={title} description={description} canonicalPath="/gioi-thieu.html">
+  <SiteHeader />
+  
+  <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-heading text-darkText mb-8">Giới thiệu</h1>
+
+        <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-primary/5 space-y-6 text-darkText/80 leading-relaxed">
+            <p>Chúng tôi cung cấp dịch vụ hỗ trợ đăng ký và tư vấn các gói dịch vụ Internet cáp quang, truyền hình và các dịch vụ viễn thông của VNPT tại khu vực Hà Nội.</p>
+
+            <p>Chúng tôi hoạt động với mục tiêu hỗ trợ khách hàng lựa chọn gói cước phù hợp, đăng ký nhanh chóng và được hỗ trợ kỹ thuật kịp thời. Đội ngũ tư vấn viên của chúng tôi có kinh nghiệm trong lĩnh vực viễn thông và luôn sẵn sàng giải đáp mọi thắc mắc của khách hàng.</p>
+
+            <p>Website này được xây dựng nhằm cung cấp thông tin về các gói dịch vụ Internet và hỗ trợ khách hàng đăng ký lắp đặt nhanh chóng.</p>
+
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 mt-6">
+                <p class="font-bold text-darkText mb-1">⚠️ Lưu ý:</p>
+                <p>Website này là kênh hỗ trợ đăng ký dịch vụ VNPT tại Hà Nội và <strong>không phải website chính thức</strong> của Tập đoàn VNPT. Xem chi tiết tại <a href="tuyen-bo-minh-bach.html" class="text-primary hover:underline">Tuyên bố minh bạch</a>.</p>
+            </div>
+
+            <div class="border-t border-gray-200 pt-6 mt-8">
+                <h2 class="text-2xl font-heading text-darkText mb-4">Thông tin cán bộ phụ trách</h2>
+                <ul class="space-y-3">
+                    <li class="flex gap-2"><span class="font-semibold text-darkText min-w-[120px]">Nhân viên:</span> Đỗ Xuân Thịnh</li>
+                    <li class="flex gap-2"><span class="font-semibold text-darkText min-w-[120px]">Mã nhân viên:</span> VNPT016320</li>
+                    <li class="flex gap-2"><span class="font-semibold text-darkText min-w-[120px]">Địa chỉ:</span> 75 Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội</li>
+                    <li class="flex gap-2"><span class="font-semibold text-darkText min-w-[120px]">Điện thoại:</span> <a href="tel:0822036382" class="text-primary hover:underline">0822 036 382</a></li>
+                    <li class="flex gap-2"><span class="font-semibold text-darkText min-w-[120px]">Email:</span> <a href="mailto:thinhdx.hni@vnpt.vn" class="text-primary hover:underline">thinhdx.hni@vnpt.vn</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+  
+  <SiteFooter />
+  <FloatingCtas />
 </BaseLayout>

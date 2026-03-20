@@ -1,16 +1,55 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LegacyPage from '../components/LegacyPage.astro';
-import { readLegacyHtmlPage } from '../lib/legacy-html';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import FloatingCtas from '../components/FloatingCtas.astro';
 
-const page = await readLegacyHtmlPage('lien-he.html');
+const title = "Liên hệ - Đăng ký Internet VNPT Hà Nội";
+const description = "Liên hệ tư vấn và đăng ký lắp đặt Internet cáp quang VNPT tại Hà Nội. Hotline: 0822 036 382.";
 ---
 
-<BaseLayout
-  title={page.title}
-  description={page.description}
-  canonicalPath="/lien-he.html"
-  bodyClass={page.bodyClass}
->
-  <LegacyPage page={page} />
+<BaseLayout title={title} description={description} canonicalPath="/lien-he.html">
+  <SiteHeader />
+  
+  <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-heading text-darkText mb-8">Liên hệ</h1>
+
+        <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-primary/5 space-y-8 text-darkText/80 leading-relaxed">
+            <p>Nếu bạn cần tư vấn về các gói dịch vụ Internet cáp quang hoặc đăng ký lắp đặt tại Hà Nội, vui lòng liên hệ với chúng tôi qua các thông tin sau:</p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Hotline -->
+                <div class="bg-surface rounded-2xl p-6 text-center border border-primary/5">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">📞</div>
+                    <h3 class="font-heading text-lg text-darkText mb-2">Hotline</h3>
+                    <a href="tel:0822036382" class="text-primary font-bold text-xl hover:underline">0822 036 382</a>
+                </div>
+                <!-- Email -->
+                <div class="bg-surface rounded-2xl p-6 text-center border border-primary/5">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">✉️</div>
+                    <h3 class="font-heading text-lg text-darkText mb-2">Email</h3>
+                    <a href="mailto:thinhdx.hni@vnpt.vn" class="text-primary font-bold hover:underline">thinhdx.hni@vnpt.vn</a>
+                </div>
+                <!-- Địa chỉ -->
+                <div class="bg-surface rounded-2xl p-6 text-center border border-primary/5">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">📍</div>
+                    <h3 class="font-heading text-lg text-darkText mb-2">Địa chỉ</h3>
+                    <p class="text-darkText/70 font-medium">75 Đinh Tiên Hoàng<br>Hoàn Kiếm, Hà Nội</p>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 pt-6">
+                <h2 class="text-2xl font-heading text-darkText mb-4">Thời gian hỗ trợ khách hàng</h2>
+                <div class="bg-surface rounded-2xl p-6 inline-block border border-primary/5">
+                    <p class="font-semibold text-darkText text-lg">Thứ Hai – Chủ Nhật</p>
+                    <p class="text-primary font-bold text-2xl">08:00 – 21:00</p>
+                </div>
+            </div>
+
+            <p>Bạn cũng có thể gọi điện trực tiếp theo số hotline trên website, chúng tôi sẽ liên hệ lại trong thời gian sớm nhất để hỗ trợ tư vấn và đăng ký lắp đặt.</p>
+        </div>
+    </main>
+  
+  <SiteFooter />
+  <FloatingCtas />
 </BaseLayout>

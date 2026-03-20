@@ -1,20 +1,168 @@
 ---
-import '../styles/package-finder.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LegacyPage from '../components/LegacyPage.astro';
-import { readLegacyHtmlPage } from '../lib/legacy-html';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import FloatingCtas from '../components/FloatingCtas.astro';
+import '../styles/package-finder.css';
 
-const page = await readLegacyHtmlPage('tim-goi-cuoc.html');
+const title = "Tra Cứu Gói Cước VNPT Hà Nội 2026";
+const description = "Tra cứu và so sánh gói cước Internet, Truyền hình, Combo VNPT Hà Nội 2026. Tìm gói phù hợp theo nhu cầu và ngân sách của bạn.";
 ---
 
-<BaseLayout
-  title={page.title}
-  description={page.description}
-  canonicalPath="/tim-goi-cuoc.html"
-  bodyClass={page.bodyClass}
->
-  <LegacyPage page={page} />
-  <script>
-    import '../scripts/package-finder.ts';
-  </script>
+<BaseLayout title={title} description={description} canonicalPath="/tim-goi-cuoc.html" bodyClass="">
+  <SiteHeader currentPath="/tim-goi-cuoc.html" />
+  
+  <div class="hero">
+    <div class="hero-badge">Bảng giá chính thức · Cập nhật 2026</div>
+    <h1>Tìm Gói Cước VNPT<br>Phù Hợp Với Bạn</h1>
+    <p>Tra cứu Internet, Truyền hình và Combo VNPT Hà Nội. Chọn theo gói hoặc để chúng tôi gợi ý dựa trên nhu cầu thực tế của bạn.</p>
+  </div>
+
+  <main class="tabs-wrapper">
+    <div class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab1" id="tab-btn-1"><span class="tab-icon">🔍</span> Tìm theo Gói và Giá</button>
+      <button class="tab-btn" data-tab="tab2" id="tab-btn-2"><span class="tab-icon">🎯</span> Gợi ý theo Nhu Cầu</button>
+    </div>
+
+    <div class="tab-panel active" id="tab1">
+      <div class="filter-section">
+        <h3>Bộ lọc</h3>
+        <div class="filter-grid">
+          <div class="filter-field">
+            <label for="f-category">Loại gói cước</label>
+            <select id="f-category">
+              <option value="all">Tất cả loại</option>
+              <option value="home">Internet hộ gia đình</option>
+              <option value="combo">Combo Internet + TV</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label for="f-area">Khu vực</label>
+            <select id="f-area">
+              <option value="urban">Nội thành</option>
+              <option value="suburb">Ngoại thành</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label for="f-duration">Thời hạn thanh toán</label>
+            <select id="f-duration">
+              <option value="m1">1 tháng</option>
+              <option value="m6">6 tháng</option>
+              <option value="m12">12 tháng</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label for="f-speed">Tốc độ tối thiểu</label>
+            <input type="range" id="f-speed" min="0" max="2000" step="100" value="0">
+            <div class="range-display" id="speed-display">Tất cả</div>
+          </div>
+
+          <div class="filter-field">
+            <label for="f-price">Giá tối đa / tháng</label>
+            <input type="range" id="f-price" min="50000" max="5000000" step="50000" value="5000000">
+            <div class="range-display" id="price-display">Không giới hạn</div>
+          </div>
+        </div>
+
+        <div class="section-title">Tính năng đặc biệt</div>
+        <div class="feature-toggles">
+          <div class="feat-toggle" data-feat="mesh">Có Mesh WiFi</div>
+          <div class="feat-toggle" data-feat="tv">Có Truyền hình</div>
+          <div class="feat-toggle" data-feat="camera">Có Camera an ninh</div>
+        </div>
+      </div>
+
+      <div class="results-bar">
+        <div class="results-count" id="result-count">Đang tải...</div>
+        <div class="sort-group">
+          <label for="f-sort">Sắp xếp:</label>
+          <select id="f-sort">
+            <option value="price-asc">Giá tăng dần</option>
+            <option value="price-desc">Giá giảm dần</option>
+            <option value="speed-desc">Tốc độ cao nhất</option>
+            <option value="speed-asc">Tốc độ thấp nhất</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="packages-grid" id="packages-grid"></div>
+    </div>
+
+    <div class="tab-panel" id="tab2">
+      <div class="wizard-container">
+        <div class="wizard-progress" id="wizard-progress">
+          <div class="progress-info">
+            <span class="progress-label">Tiến trình</span>
+            <span class="progress-step">Bước <strong id="progress-step-cur">1</strong> / <strong id="progress-step-tot">7</strong></span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+          <div class="step-dots" id="step-dots"></div>
+        </div>
+
+        <div id="wizard-steps-container"></div>
+
+        <div class="wizard-nav" id="wizard-nav" style="margin-top:1.5rem;">
+          <button class="btn-prev" id="btn-prev" disabled>← Quay lại</button>
+          <button class="btn-next" id="btn-next">Tiếp theo →</button>
+        </div>
+
+        <div class="recommendation-section" id="recommendation-section" style="display:none;">
+          <div class="rec-header">
+            <h2>🎯 Gợi ý gói phù hợp cho bạn</h2>
+            <p>Dựa trên nhu cầu bạn đã cung cấp, đây là các gói chúng tôi gợi ý:</p>
+          </div>
+          <div class="rec-grid" id="rec-grid"></div>
+          <div style="text-align:center;margin-top:2rem;">
+            <button class="btn-restart" id="btn-restart">🔄 Làm lại khảo sát</button>
+          </div>
+          <div style="text-align:center;margin-top:0.8rem;">
+            <p style="color:var(--text-muted);font-size:0.85rem;">Muốn xem thêm lựa chọn? Dùng tab <strong style="color:var(--primary-light)">Tìm theo Gói và Giá</strong> để tùy chỉnh bộ lọc.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="compare-bar" id="compare-bar">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <span style="font-weight:700;color:#fff;font-size:0.9rem;">So sánh gói (<span id="compare-count">0</span>)</span>
+      <div class="compare-slots" id="compare-slots"></div>
+    </div>
+    <div class="compare-actions">
+      <button class="btn-compare" id="btn-do-compare">Xem so sánh →</button>
+      <button class="btn-clear-compare" id="btn-clear-compare">Xóa tất cả</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-detail" role="dialog" aria-modal="true" aria-label="Chi tiết gói cước">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Chi tiết gói</h2>
+        <button class="modal-close" aria-label="Đóng">✕</button>
+      </div>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay compare-modal" id="modal-compare" role="dialog" aria-modal="true" aria-label="So sánh gói cước">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>So sánh gói cước</h2>
+        <button class="modal-close" aria-label="Đóng">✕</button>
+      </div>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+  
+  <SiteFooter />
+  <FloatingCtas />
 </BaseLayout>
+
+<script>
+  import '../scripts/package-finder.ts';
+</script>

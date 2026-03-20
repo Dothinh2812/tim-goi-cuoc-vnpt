@@ -1,7 +1,7 @@
 'use strict';
 
 // Replace this URL after deploying Google Apps Script Web App.
-const GOOGLE_SCRIPT_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvKt_Jkcbx6KHtKcLpWJBgjN1riJa4wKnCAqW5vHOMI3f-q-qXItDQfsIqeQDYAHGvBg/exec';
 
 function getLeadForm() {
   const phoneInput = document.getElementById('bottomPhone');

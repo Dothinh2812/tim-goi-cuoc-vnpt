@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@source "../../*.html";
-@source "../../blog-content/*.html";
 @source "../**/*.{astro,md,mdx,ts}";
 
 @theme {

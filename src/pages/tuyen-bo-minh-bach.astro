@@ -1,16 +1,81 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LegacyPage from '../components/LegacyPage.astro';
-import { readLegacyHtmlPage } from '../lib/legacy-html';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import FloatingCtas from '../components/FloatingCtas.astro';
 
-const page = await readLegacyHtmlPage('tuyen-bo-minh-bach.html');
+const title = "Tuyên bố minh bạch - vnpt-hanoi.net";
+const description = "Tuyên bố minh bạch về website vnpt-hanoi.net, thông tin quản lý website, phạm vi hỗ trợ dịch vụ và kênh xác minh chính thức của VNPT Hà Nội.";
 ---
 
-<BaseLayout
-  title={page.title}
-  description={page.description}
-  canonicalPath="/tuyen-bo-minh-bach.html"
-  bodyClass={page.bodyClass}
->
-  <LegacyPage page={page} />
+<BaseLayout title={title} description={description} canonicalPath="/tuyen-bo-minh-bach.html">
+  <SiteHeader />
+  
+  <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div class="text-center mb-10">
+            <div class="inline-block bg-primary/10 text-primary font-semibold px-4 py-2 rounded-full mb-5">
+                Tuyên bố minh bạch
+            </div>
+            <h1 class="text-4xl md:text-5xl font-heading text-darkText mb-4">Tuyên Bố Minh Bạch Về Website</h1>
+            <p class="text-lg text-darkText/70 max-w-3xl mx-auto">vnpt-hanoi.net là kênh hỗ trợ đăng ký dịch vụ do nhân viên/đại lý VNPT vận hành, không phải website chính thức của Tập đoàn VNPT.</p>
+        </div>
+
+        <div class="bg-amber-50 border border-amber-200 rounded-3xl p-6 md:p-8 mb-8">
+            <h2 class="text-2xl font-heading text-darkText mb-3">Thông báo quan trọng</h2>
+            <p class="text-darkText/80 leading-relaxed">Website này được vận hành bởi nhân viên/đại lý VNPT nhằm hỗ trợ khách hàng tại Hà Nội tra cứu thông tin và đăng ký dịch vụ. Website chính thức của VNPT Hà Nội là <a href="https://vnpthanoi.com.vn" target="_blank" rel="noopener" class="text-primary font-bold hover:underline">vnpthanoi.com.vn</a>.</p>
+        </div>
+
+        <div class="space-y-8">
+            <section class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-primary/5">
+                <h2 class="text-2xl font-heading text-darkText mb-5">1. Thông tin quản lý website</h2>
+                <ul class="space-y-3 text-darkText/80">
+                    <li><strong>Họ tên:</strong> Đỗ Xuân Thịnh</li>
+                    <li><strong>Mã nhân viên:</strong> VNPT016320</li>
+                    <li><strong>Đơn vị:</strong> VNPT Hà Nội</li>
+                    <li><strong>Địa chỉ:</strong> 75 Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội</li>
+                    <li><strong>Email:</strong> <a href="mailto:thinhdx.hni@vnpt.vn" class="text-primary hover:underline">thinhdx.hni@vnpt.vn</a></li>
+                    <li><strong>Điện thoại:</strong> <a href="tel:0822036382" class="text-primary hover:underline">0822 036 382</a></li>
+                </ul>
+            </section>
+
+            <section class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-primary/5">
+                <h2 class="text-2xl font-heading text-darkText mb-5">2. Mục đích của website</h2>
+                <ul class="space-y-3 text-darkText/80 list-disc pl-5">
+                    <li>Tìm hiểu và so sánh các gói cước Internet cáp quang VNPT.</li>
+                    <li>Hỗ trợ đăng ký lắp đặt dịch vụ Internet Home qua kênh nhân viên/đại lý.</li>
+                    <li>Tư vấn trực tiếp về gói cước phù hợp với nhu cầu sử dụng.</li>
+                    <li>Hỗ trợ sau lắp đặt thông qua đường dây liên hệ trực tiếp.</li>
+                </ul>
+            </section>
+
+            <section class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-primary/5">
+                <h2 class="text-2xl font-heading text-darkText mb-5">3. Mối quan hệ với VNPT</h2>
+                <ul class="space-y-3 text-darkText/80 list-disc pl-5">
+                    <li>Người quản lý website là nhân viên/cộng tác viên kinh doanh của VNPT Hà Nội và được phép tư vấn, hỗ trợ đăng ký dịch vụ.</li>
+                    <li>Website không đại diện cho Tập đoàn VNPT hay bất kỳ công ty thành viên nào về mặt pháp lý.</li>
+                    <li>Website không có quyền ký kết hợp đồng dịch vụ thay mặt VNPT.</li>
+                    <li>Website không phải kênh chăm sóc khách hàng chính thức của VNPT.</li>
+                    <li>Thông tin giá cước mang tính tham khảo, giá chính thức theo hợp đồng ký với VNPT.</li>
+                </ul>
+            </section>
+
+            <section class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-primary/5">
+                <h2 class="text-2xl font-heading text-darkText mb-5">4. Thông tin về logo và thương hiệu</h2>
+                <p class="text-darkText/80 leading-relaxed">Logo và tên thương hiệu VNPT được sử dụng trên website này với mục đích nhận diện dịch vụ mà nhân viên đang hỗ trợ đăng ký, không nhằm mục đích giả mạo hay gây nhầm lẫn về xuất xứ website.</p>
+            </section>
+
+            <section class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-primary/5">
+                <h2 class="text-2xl font-heading text-darkText mb-5">5. Liên hệ xác minh</h2>
+                <ul class="space-y-3 text-darkText/80 list-disc pl-5">
+                    <li>Tổng đài VNPT: <a href="tel:18001166" class="text-primary hover:underline">1800 1166</a> (miễn phí, 24/7)</li>
+                    <li>Website chính thức: <a href="https://vnpthanoi.com.vn" target="_blank" rel="noopener" class="text-primary hover:underline">vnpthanoi.com.vn</a></li>
+                    <li>Trực tiếp tại các điểm giao dịch VNPT Hà Nội.</li>
+                </ul>
+                <p class="mt-5 text-sm text-darkText/60">Cập nhật lần cuối: Tháng 3 năm 2026</p>
+            </section>
+        </div>
+    </main>
+  
+  <SiteFooter />
+  <FloatingCtas />
 </BaseLayout>

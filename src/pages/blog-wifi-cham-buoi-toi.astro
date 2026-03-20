@@ -1,16 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LegacyPage from '../components/LegacyPage.astro';
-import { readLegacyHtmlPage } from '../lib/legacy-html';
 
-const page = await readLegacyHtmlPage('blog-wifi-cham-buoi-toi.html');
+const title = "WiFi Chậm Buổi Tối: Nguyên Nhân Và Cách Khắc Phục";
+const description = "WiFi chậm vào buổi tối do đâu? Xem checklist 10 phút tự kiểm tra tại nhà và cách xử lý trước khi gọi kỹ thuật.";
+const bodyClass = "bg-surface antialiased";
+const inlineStyles = [
+  "body { font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif; color: #1A1A2E; }\n        h1, h2, h3 { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 700; }\n        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }"
+];
+const bodyHtml = "<nav class=\"fixed w-full z-50 glass-nav border-b border-primary/10\">\n        <div class=\"max-w-5xl mx-auto px-4\">\n            <div class=\"flex justify-between items-center h-20\">\n                <a href=\"blog.html\" class=\"text-primary font-bold\">← Quay lại Blog</a>\n                <a href=\"tel:0822036382\" class=\"bg-accent text-white px-5 py-2 rounded-full font-bold\">0822 036 382</a>\n            </div>\n        </div>\n    </nav>\n\n    <article class=\"max-w-4xl mx-auto px-4 pt-32 pb-14\">\n        <header class=\"mb-8\">\n            <p class=\"text-sm font-semibold text-secondary mb-2\">Xử lý sự cố mạng</p>\n            <h1 class=\"text-3xl md:text-4xl font-bold mb-3\">WiFi Chậm Buổi Tối: Nguyên Nhân Và Cách Khắc Phục</h1>\n            <p class=\"text-darkText/70\">Buổi tối là khung giờ cao điểm. Dưới đây là checklist xử lý nhanh trong 10 phút.</p>\n        </header>\n\n        <div class=\"bg-white border border-primary/10 rounded-2xl p-6 space-y-6 leading-relaxed text-darkText/80\">\n            <section>\n                <h2 class=\"text-2xl mb-3\">Nguyên nhân phổ biến</h2>\n                <ul class=\"list-disc pl-6 space-y-2\">\n                    <li>Nhiều thiết bị cùng xem video 4K, chơi game, gọi video.</li>\n                    <li>WiFi bị nhiễu kênh tại khu dân cư đông đúc.</li>\n                    <li>Modem nóng hoặc hoạt động liên tục trong thời gian dài.</li>\n                    <li>Thiết bị ở xa modem, bị chắn bởi tường dày.</li>\n                </ul>\n            </section>\n\n            <section>\n                <h2 class=\"text-2xl mb-3\">Checklist 10 phút</h2>\n                <ol class=\"list-decimal pl-6 space-y-2\">\n                    <li>Khởi động lại modem/router.</li>\n                    <li>Tắt bớt ứng dụng nặng băng thông trên TV/điện thoại.</li>\n                    <li>Đổi thiết bị gần modem sang 5GHz.</li>\n                    <li>Đo tốc độ lại bằng một thiết bị duy nhất.</li>\n                    <li>So sánh kết quả giữa cổng LAN và WiFi.</li>\n                </ol>\n            </section>\n\n            <section>\n                <h2 class=\"text-2xl mb-3\">Khi nào cần gọi hỗ trợ</h2>\n                <p>Nếu tốc độ LAN cũng thấp rõ rệt trong nhiều ngày, hoặc mạng rớt liên tục dù đã tối ưu tại nhà, bạn nên liên hệ kỹ thuật để kiểm tra tuyến cáp và cổng kết nối.</p>\n            </section>\n\n            <section class=\"bg-primary/5 rounded-xl p-4 border border-primary/10\">\n                <h3 class=\"font-bold text-lg mb-2\">Gợi ý tiếp theo</h3>\n                <p>Đọc bài <a class=\"text-primary font-bold hover:underline\" href=\"blog-do-toc-do-mang-dung-cach.html\">Hướng dẫn đo tốc độ mạng đúng cách</a> để có kết quả chuẩn trước khi báo lỗi.</p>\n            </section>\n        </div>\n    </article>";
 ---
 
-<BaseLayout
-  title={page.title}
-  description={page.description}
-  canonicalPath="/blog-wifi-cham-buoi-toi.html"
-  bodyClass={page.bodyClass}
->
-  <LegacyPage page={page} />
+<BaseLayout title={title} description={description} canonicalPath="/blog-wifi-cham-buoi-toi.html" bodyClass={bodyClass}>
+  {inlineStyles.map((css) => <style is:global set:html={css} />)}
+  <Fragment set:html={bodyHtml} />
 </BaseLayout>
