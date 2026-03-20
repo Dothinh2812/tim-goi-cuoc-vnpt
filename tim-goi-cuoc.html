@@ -1,97 +1,64 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tra Cứu Gói Cước VNPT Hà Nội 2026</title>
-  <meta name="description"
-    content="Tra cứu và so sánh gói cước Internet, Truyền hình, Combo VNPT Hà Nội 2026. Tìm gói phù hợp theo nhu cầu và ngân sách của bạn.">
+  <meta name="description" content="Tra cứu và so sánh gói cước Internet, Truyền hình, Combo VNPT Hà Nội 2026. Tìm gói phù hợp theo nhu cầu và ngân sách của bạn.">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-        font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif;
-        color: #1A1A2E;
-    }
-    h1, h2, h3, h4, h5, h6, .font-heading {
-        font-family: 'Helvetica Neue', 'Arial', 'sans-serif';
-        font-weight: 700;
-        letter-spacing: -0.01em;
-    }
-  </style>
 </head>
-
 <body>
-
-  <!-- ─── NAVBAR ─────────────────────────────────────────────── -->
   <nav class="navbar">
     <div class="navbar-inner">
-      <a class="logo" href="#">
+      <a class="logo" href="index.html">
         <img src="logo-vnpt.png" alt="VNPT Logo" style="height: 40px; width: auto; margin-right: 8px;">
-        <div>
-          <div class="logo-text"><span>VNPT</span> Gói Cước</div>
-        </div>
+        <div class="logo-text"><span>VNPT</span> Gói Cước</div>
       </a>
-      <div class="navbar-sub">Hà Nội · Bảng giá 2026</div>
+      <div class="navbar-sub">
+        <a href="bang-gia.html">Bảng giá</a>
+        <a href="huong-dan-dang-ky.html">Hướng dẫn đăng ký</a>
+        <a href="faq.html">Hỏi đáp</a>
+        <a href="blog.html">Blog</a>
+      </div>
       <div class="navbar-contact">
-        <span>📞 Hotline:</span>
-        <a href="tel:18001166">1800.1166</a>
-        <span>|</span>
-        <a href="tel:0822036382">0822 036 382</a>
+        <a href="tel:0822036382">Gọi ngay: 0822 036 382</a>
       </div>
     </div>
   </nav>
 
-  <!-- ─── HERO ───────────────────────────────────────────────── -->
   <div class="hero">
-    <div class="hero-badge">
-      ✨ Bảng giá chính thức · Cập nhật 2026
-    </div>
+    <div class="hero-badge">Bảng giá chính thức · Cập nhật 2026</div>
     <h1>Tìm Gói Cước VNPT<br>Phù Hợp Với Bạn</h1>
-    <p>Tra cứu Internet, Truyền hình &amp; Combo VNPT Hà Nội. Chọn theo gói hoặc để chúng tôi gợi ý dựa trên nhu cầu
-      thực tế của bạn.</p>
+    <p>Tra cứu Internet, Truyền hình và Combo VNPT Hà Nội. Chọn theo gói hoặc để chúng tôi gợi ý dựa trên nhu cầu thực tế của bạn.</p>
   </div>
 
-  <!-- ─── MAIN CONTENT ────────────────────────────────────────── -->
   <main class="tabs-wrapper">
-
-    <!-- Tabs Navigation -->
     <div class="tabs-nav">
-      <button class="tab-btn active" data-tab="tab1" id="tab-btn-1">
-        <span class="tab-icon">🔍</span> Tìm theo Gói &amp; Giá
-      </button>
-      <button class="tab-btn" data-tab="tab2" id="tab-btn-2">
-        <span class="tab-icon">🎯</span> Gợi ý theo Nhu Cầu
-      </button>
+      <button class="tab-btn active" data-tab="tab1" id="tab-btn-1"><span class="tab-icon">🔍</span> Tìm theo Gói và Giá</button>
+      <button class="tab-btn" data-tab="tab2" id="tab-btn-2"><span class="tab-icon">🎯</span> Gợi ý theo Nhu Cầu</button>
     </div>
 
-    <!-- ══════════════════════════════════════════════════════
-       TAB 1 – FILTER & LIST
-  ════════════════════════════════════════════════════════ -->
     <div class="tab-panel active" id="tab1">
-
-      <!-- Filter -->
       <div class="filter-section">
-        <h3>🔧 Bộ Lọc</h3>
+        <h3>Bộ lọc</h3>
         <div class="filter-grid">
-
           <div class="filter-field">
             <label for="f-category">Loại gói cước</label>
             <select id="f-category">
               <option value="all">Tất cả loại</option>
-              <option value="home">🏠 Internet Hộ Gia Đình</option>
-              <option value="combo">🎬 Combo Internet + TV (HomeTV)</option>
+              <option value="home">Internet hộ gia đình</option>
+              <option value="combo">Combo Internet + TV</option>
             </select>
           </div>
 
           <div class="filter-field">
             <label for="f-area">Khu vực</label>
             <select id="f-area">
-              <option value="urban">🏙 Nội thành</option>
-              <option value="suburb">🌿 Ngoại thành</option>
+              <option value="urban">Nội thành</option>
+              <option value="suburb">Ngoại thành</option>
             </select>
           </div>
 
@@ -115,19 +82,16 @@
             <input type="range" id="f-price" min="50000" max="5000000" step="50000" value="5000000">
             <div class="range-display" id="price-display">Không giới hạn</div>
           </div>
-
         </div>
 
-        <!-- Feature toggles -->
         <div class="section-title">Tính năng đặc biệt</div>
         <div class="feature-toggles">
-          <div class="feat-toggle" data-feat="mesh">📶 Có Mesh WiFi</div>
-          <div class="feat-toggle" data-feat="tv">📺 Có Truyền hình</div>
-          <div class="feat-toggle" data-feat="camera">📷 Có Camera An Ninh</div>
+          <div class="feat-toggle" data-feat="mesh">Có Mesh WiFi</div>
+          <div class="feat-toggle" data-feat="tv">Có Truyền hình</div>
+          <div class="feat-toggle" data-feat="camera">Có Camera an ninh</div>
         </div>
       </div>
 
-      <!-- Results bar -->
       <div class="results-bar">
         <div class="results-count" id="result-count">Đang tải...</div>
         <div class="sort-group">
@@ -141,25 +105,15 @@
         </div>
       </div>
 
-      <!-- Package grid -->
-      <div class="packages-grid" id="packages-grid">
-        <!-- cards rendered by JS -->
-      </div>
+      <div class="packages-grid" id="packages-grid"></div>
+    </div>
 
-    </div><!-- /tab1 -->
-
-    <!-- ══════════════════════════════════════════════════════
-       TAB 2 – WIZARD
-  ════════════════════════════════════════════════════════ -->
     <div class="tab-panel" id="tab2">
       <div class="wizard-container">
-
-        <!-- Progress bar -->
         <div class="wizard-progress" id="wizard-progress">
           <div class="progress-info">
             <span class="progress-label">Tiến trình</span>
-            <span class="progress-step">Bước <strong id="progress-step-cur">1</strong> / <strong
-                id="progress-step-tot">7</strong></span>
+            <span class="progress-step">Bước <strong id="progress-step-cur">1</strong> / <strong id="progress-step-tot">7</strong></span>
           </div>
           <div class="progress-track">
             <div class="progress-fill" id="progress-fill" style="width:0%"></div>
@@ -167,16 +121,13 @@
           <div class="step-dots" id="step-dots"></div>
         </div>
 
-        <!-- Steps container -->
         <div id="wizard-steps-container"></div>
 
-        <!-- Navigation (inside wizard steps flow) -->
         <div class="wizard-nav" id="wizard-nav" style="margin-top:1.5rem;">
           <button class="btn-prev" id="btn-prev" disabled>← Quay lại</button>
           <button class="btn-next" id="btn-next">Tiếp theo →</button>
         </div>
 
-        <!-- Results -->
         <div class="recommendation-section" id="recommendation-section" style="display:none;">
           <div class="rec-header">
             <h2>🎯 Gợi ý gói phù hợp cho bạn</h2>
@@ -186,23 +137,17 @@
           <div style="text-align:center;margin-top:2rem;">
             <button class="btn-restart" id="btn-restart">🔄 Làm lại khảo sát</button>
           </div>
-          <br>
-          <div style="text-align:center;margin-top:0.5rem;">
-            <p style="color:var(--text-muted);font-size:0.85rem;">Muốn xem thêm lựa chọn? Dùng <strong
-                style="color:var(--primary-light)">Tab "Tìm theo Gói &amp; Giá"</strong> để tùy chỉnh bộ lọc.</p>
+          <div style="text-align:center;margin-top:0.8rem;">
+            <p style="color:var(--text-muted);font-size:0.85rem;">Muốn xem thêm lựa chọn? Dùng tab <strong style="color:var(--primary-light)">Tìm theo Gói và Giá</strong> để tùy chỉnh bộ lọc.</p>
           </div>
         </div>
-
       </div>
-    </div><!-- /tab2 -->
-
+    </div>
   </main>
 
-  <!-- ─── COMPARE BAR (sticky bottom) ───────────────────────── -->
   <div class="compare-bar" id="compare-bar">
     <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-      <span style="font-weight:700;color:#fff;font-size:0.9rem;">⚖️ So sánh gói (<span
-          id="compare-count">0</span>)</span>
+      <span style="font-weight:700;color:#fff;font-size:0.9rem;">So sánh gói (<span id="compare-count">0</span>)</span>
       <div class="compare-slots" id="compare-slots"></div>
     </div>
     <div class="compare-actions">
@@ -211,7 +156,6 @@
     </div>
   </div>
 
-  <!-- ─── MODAL – DETAIL ─────────────────────────────────────── -->
   <div class="modal-overlay" id="modal-detail" role="dialog" aria-modal="true" aria-label="Chi tiết gói cước">
     <div class="modal">
       <div class="modal-header">
@@ -222,47 +166,53 @@
     </div>
   </div>
 
-  <!-- ─── MODAL – COMPARE ────────────────────────────────────── -->
-  <div class="modal-overlay compare-modal" id="modal-compare" role="dialog" aria-modal="true"
-    aria-label="So sánh gói cước">
+  <div class="modal-overlay compare-modal" id="modal-compare" role="dialog" aria-modal="true" aria-label="So sánh gói cước">
     <div class="modal">
       <div class="modal-header">
-        <h2>⚖️ So sánh gói cước</h2>
+        <h2>So sánh gói cước</h2>
         <button class="modal-close" aria-label="Đóng">✕</button>
       </div>
       <div class="modal-body"></div>
     </div>
   </div>
 
-  <!-- ─── FOOTER ──────────────────────────────────────────────── -->
   <footer class="footer">
-    <p>
-      📞 <strong>Tư vấn & Đăng ký:</strong>
-      <a href="tel:0822036382">0822 036 382</a> &nbsp;|&nbsp;
-      <a href="tel:18001166">1800.1166 (miễn phí)</a>
-      &nbsp;|&nbsp;
-      <a href="https://banhangvnpt.vn" target="_blank" rel="noopener">banhangvnpt.vn</a>
-    </p>
-    <p style="margin-top:0.5rem;">
-      <a href="tuyen-bo-minh-bach.html">Tuyên bố minh bạch</a> &nbsp;|&nbsp;
-      <a href="https://vnpthanoi.com.vn" target="_blank" rel="noopener">Website chính thức VNPT Hà Nội</a>
-    </p>
-    <p style="margin-top:0.5rem;">Ứng dụng tra cứu gói cước VNPT Hà Nội · Bảng giá áp dụng từ 01/04/2026</p>
-    <p style="margin-top:0.25rem;font-size:0.75rem;">Giá đã bao gồm VAT · Khuyến mại áp dụng cho thuê bao lắp đặt mới ·
-      Không áp dụng tại một số tòa nhà có chính sách giá riêng</p>
+    <div class="footer-links">
+      <a href="gioi-thieu.html">Giới thiệu</a>
+      <span>|</span>
+      <a href="lien-he.html">Liên hệ</a>
+      <span>|</span>
+      <a href="tuyen-bo-minh-bach.html">Tuyên bố minh bạch</a>
+      <span>|</span>
+      <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a>
+      <span>|</span>
+      <a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a>
+      <span>|</span>
+      <a href="bang-gia.html">Bảng giá</a>
+      <span>|</span>
+      <a href="tim-goi-cuoc.html" class="active">Tìm gói cước</a>
+      <span>|</span>
+      <a href="blog.html">Blog</a>
+    </div>
+    <div class="footer-meta">
+      <p>Website kênh đại lý/nhân viên VNPT. Quản lý bởi: Nhân viên Đỗ Xuân Thịnh - Mã NV: VNPT016320</p>
+      <p>Địa chỉ: 75 Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội | Email: <a href="mailto:thinhdx.hni@vnpt.vn">thinhdx.hni@vnpt.vn</a></p>
+      <p>Không phải website chính thức của Tập đoàn VNPT. Website chính thức: <a href="https://vnpthanoi.com.vn" target="_blank" rel="noopener">vnpthanoi.com.vn</a></p>
+    </div>
   </footer>
 
   <script src="data.js"></script>
   <script src="app.js"></script>
-    <!-- Floating CTA -->
-    <div class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[1000] flex flex-col gap-3">
-        <a href="tel:0822036382" class="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center bg-accent shadow-[0_4px_15px_rgba(0,0,0,0.25)] hover:scale-110 transition-transform duration-300" title="Gọi ngay">
-            <svg viewBox="0 0 24 24" class="w-6 h-6 md:w-7 md:h-7 fill-white"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
-        </a>
-        <a href="https://zalo.me/0822036382" target="_blank" class="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center bg-[#0068FF] shadow-[0_4px_15px_rgba(0,0,0,0.25)] hover:scale-110 transition-transform duration-300" title="Chat Zalo">
-            <svg viewBox="0 0 24 24" class="w-6 h-6 md:w-7 md:h-7 fill-white"><path d="M12.49 10.2722v-.4496h1.3467v6.3218h-.7704a.576.576 0 01-.5763-.5729l-.0006.0005a3.273 3.273 0 01-1.9372.6321c-1.8138 0-3.2844-1.4697-3.2844-3.2823 0-1.8125 1.4706-3.2822 3.2844-3.2822a3.273 3.273 0 011.9372.6321l.0006.0005zM6.9188 7.7896v.205c0 .3823-.051.6944-.2995 1.0605l-.03.0343c-.0542.0615-.1815.206-.2421.2843L2.024 14.8h4.8948v.7682a.5764.5764 0 01-.5767.5761H0v-.3622c0-.4436.1102-.6414.2495-.8476L4.8582 9.23H.1922V7.7896h6.7266zm8.5513 8.3548a.4805.4805 0 01-.4803-.4798v-7.875h1.4416v8.3548H15.47zM20.6934 9.6C22.52 9.6 24 11.0807 24 12.9044c0 1.8252-1.4801 3.306-3.3066 3.306-1.8264 0-3.3066-1.4808-3.3066-3.306 0-1.8237 1.4802-3.3044 3.3066-3.3044zm-10.1412 5.253c1.0675 0 1.9324-.8645 1.9324-1.9312 0-1.065-.865-1.9295-1.9324-1.9295s-1.9324.8644-1.9324 1.9295c0 1.0667.865 1.9312 1.9324 1.9312zm10.1412-.0033c1.0737 0 1.945-.8707 1.945-1.9453 0-1.073-.8713-1.9436-1.945-1.9436-1.0753 0-1.945.8706-1.945 1.9436 0 1.0746.8697 1.9453 1.945 1.9453z"/></svg>
-        </a>
-    </div>
-</body>
 
+  <div class="floating-cta">
+    <a href="tel:0822036382" class="floating-btn call" title="Gọi ngay">
+      <svg viewBox="0 0 24 24" class="floating-icon"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+    </a>
+    <a href="https://zalo.me/0822036382" target="_blank" class="floating-btn zalo" title="Chat Zalo">
+      <svg viewBox="0 0 24 24" class="floating-icon"><path d="M12.49 10.2722v-.4496h1.3467v6.3218h-.7704a.576.576 0 01-.5763-.5729l-.0006.0005a3.273 3.273 0 01-1.9372.6321c-1.8138 0-3.2844-1.4697-3.2844-3.2823 0-1.8125 1.4706-3.2822 3.2844-3.2822a3.273 3.273 0 011.9372.6321l.0006.0005zM6.9188 7.7896v.205c0 .3823-.051.6944-.2995 1.0605l-.03.0343c-.0542.0615-.1815.206-.2421.2843L2.024 14.8h4.8948v.7682a.5764.5764 0 01-.5767.5761H0v-.3622c0-.4436.1102-.6414.2495-.8476L4.8582 9.23H.1922V7.7896h6.7266zm8.5513 8.3548a.4805.4805 0 01-.4803-.4798v-7.875h1.4416v8.3548H15.47zM20.6934 9.6C22.52 9.6 24 11.0807 24 12.9044c0 1.8252-1.4801 3.306-3.3066 3.306-1.8264 0-3.3066-1.4808-3.3066-3.306 0-1.8237 1.4802-3.3044 3.3066-3.3044zm-10.1412 5.253c1.0675 0 1.9324-.8645 1.9324-1.9312 0-1.065-.865-1.9295-1.9324-1.9295s-1.9324.8644-1.9324 1.9295c0 1.0667.865 1.9312 1.9324 1.9312zm10.1412-.0033c1.0737 0 1.945-.8707 1.945-1.9453 0-1.073-.8713-1.9436-1.945-1.9436-1.0753 0-1.945.8706-1.945 1.9436 0 1.0746.8697 1.9453 1.945 1.9453z"/></svg>
+    </a>
+  </div>
+</body>
 </html>
+
+
