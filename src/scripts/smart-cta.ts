@@ -46,19 +46,15 @@ function swapCtaForDesktop(): void {
         }
       });
     } else if (ctaType === 'call-hotline') {
-      // It is now a 'Hotline 0822 036 382'
-      const svgEl = el.querySelector('svg');
-      const zaloSvg = createZaloIcon();
-      if (svgEl) {
-        svgEl.replaceWith(zaloSvg);
-      } else {
-        // Since there is no icon initially, we insert the Zalo icon
-        el.insertBefore(zaloSvg, el.firstChild);
-      }
+      // Revert the Zalo href swap and keep the original phone number functionality + text
+      el.href = 'tel:0822036382';
+      el.removeAttribute('target');
+      el.removeAttribute('rel');
+      
       const textNodes = Array.from(el.childNodes).filter(n => n.nodeType === Node.TEXT_NODE);
       textNodes.forEach(n => {
         if (n.textContent && n.textContent.trim().includes('0822')) {
-          n.textContent = ' Chat Zalo Hotline ';
+          n.textContent = ' Hotline: 0822 036 382 ';
         }
       });
     } else if (ctaType === 'call-cta') {
