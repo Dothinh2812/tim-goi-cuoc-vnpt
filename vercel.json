@@ -2,6 +2,18 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "host",
+          "value": "^(?:www\\.)?vnpt-hanoi\\.net$"
+        }
+      ],
+      "destination": "https://dangky-vnpt.online/:path*",
+      "statusCode": 301
+    },
+    {
       "source": "/blog-bo-tri-wifi-nha-nhieu-tang.html",
       "destination": "/blog-content/blog-bo-tri-wifi-nha-nhieu-tang.html",
       "permanent": true
