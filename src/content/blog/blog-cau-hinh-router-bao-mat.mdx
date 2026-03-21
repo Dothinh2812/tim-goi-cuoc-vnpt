@@ -1,53 +1,53 @@
 ---
 slug: "blog-cau-hinh-router-bao-mat"
-title: "Cấu hình router cơ bản để bảo mật mạng gia đình tốt hơn"
-description: "Bài viết chuẩn SEO về cấu hình router bảo mật, có checklist và FAQ giúp bạn áp dụng ngay tại nhà."
-category: "Bảo mật mạng gia đình"
-weekLabel: "Tuần 10"
-pubDate: "2026-04-10"
-updatedDate: "2026-04-10"
+title: "Hướng dẫn cấu hình Router WiFi bảo mật chống xâm nhập"
+description: "Bảo vệ mạng WiFi gia đình khỏi hacker và người dùng trộm. Hướng dẫn các bước cấu hình bảo mật từ cơ bản đến nâng cao cho Router VNPT."
+category: "Bảo mật và Quyền riêng tư"
+weekLabel: "Tuần 8"
+pubDate: "2026-04-20"
+updatedDate: "2026-04-20"
 keywords:
-  - "cấu hình router bảo mật"
-excerpt: "Bài viết chuẩn SEO về cấu hình router bảo mật, có checklist và FAQ giúp bạn áp dụng ngay tại nhà."
-order: 19
+  - "cấu hình bảo mật wifi"
+  - "chống hack wifi"
+  - "bảo mật router vnpt"
+excerpt: "WiFi nhà bạn có đang 'mở cửa' cho hacker? Chỉ với vài bước cấu hình đơn giản, bạn có thể biến mạng nhà mình thành pháo đài bất khả xâm phạm."
+order: 16
 ---
 
 <h2 class="text-2xl font-heading text-darkText mt-8 mb-3">Mở đầu</h2>
-<p class="text-darkText/80 leading-relaxed">Bài viết giúp bạn xử lý đúng vấn đề thường gặp khi dùng Internet/WiFi tại nhà. Mục tiêu là kiểm tra nhanh, tối ưu đúng chỗ và tiết kiệm chi phí trước khi nâng gói hoặc thay thiết bị.</p>
+<p class="text-darkText/80 leading-relaxed">Đa số người dùng chỉ quan tâm đến tốc độ mạng mà quên mất rằng bảo mật WiFi cũng quan trọng không kém. Một Router không được bảo mật đúng cách có thể là cửa ngõ để kẻ xấu đánh cắp thông tin cá nhân, tài khoản ngân hàng hoặc đơn giản là dùng chùa làm mạng nhà bạn chậm đi.</p>
 
-<h2 class="text-2xl font-heading text-darkText mt-8 mb-3">Vấn đề người dùng thường gặp</h2>
+<h2 class="text-2xl font-heading text-darkText mt-8 mb-3">Các lỗ hổng bảo mật thường gặp</h2>
 <ul class="list-disc pl-6 space-y-2 text-darkText/80">
-  <li>Đổi mật khẩu WiFi mạnh và cập nhật chuẩn bảo mật WPA2/WPA3.</li>
-  <li>Kiểm tra thiết bị lạ đang kết nối mạng định kỳ hàng tuần.</li>
-  <li>Tách Guest WiFi để bảo vệ mạng chính và thiết bị nội bộ.</li>
+  <li><strong>Mật khẩu admin mặc định:</strong> Rất nhiều người vẫn để mật khẩu quản lý Router là "admin/admin", vô cùng nguy hiểm.</li>
+  <li><strong>Tính năng WPS đang bật:</strong> WPS giúp kết nối nhanh nhưng lại là "gót chân Achilles" dễ bị các phần mềm hack WiFi khai thác nhất.</li>
+  <li><strong>Chuẩn mã hóa cũ:</strong> Sử dụng chuẩn WEP hoặc WPA (đời cũ) khiến mật khẩu WiFi của bạn có thể bị crack trong vài phút.</li>
 </ul>
 
-<h2 class="text-2xl font-heading text-darkText mt-8 mb-3">Hướng dẫn tự kiểm tra và tối ưu</h2>
+<h2 class="text-2xl font-heading text-darkText mt-8 mb-3">Các bước cấu hình bảo mật chuẩn</h2>
 <ol class="list-decimal pl-6 space-y-2 text-darkText/80">
-  <li>Đo trong cùng điều kiện tối thiểu 2-3 lần.</li>
-  <li>Ghi lại chỉ số Download, Upload, Ping và mức ổn định.</li>
-  <li>So sánh trước/sau khi tối ưu để xác định bước hiệu quả.</li>
+  <li><strong>Đổi mật khẩu quản trị (Login Password):</strong> Đây là mật khẩu để vào trang cài đặt 192.168.1.1. Hãy đổi nó ngay lập tức sang một chuỗi ký tự khó đoán.</li>
+  <li><strong>Sử dụng mã hóa WPA2 hoặc WPA3:</strong> Chọn chuẩn WPA2-AES (hoặc WPA3 nếu Router hỗ trợ) để đảm bảo dữ liệu truyền đi được mã hóa an toàn nhất.</li>
+  <li><strong>Tắt tính năng WPS:</strong> Tìm trong phần Wireless và Disabled tính năng WPS ngay lập tức.</li>
+  <li><strong>Ẩn tên WiFi (SSID):</strong> Nếu muốn cực kỳ riêng tư, bạn có thể ẩn tên WiFi. Người khác sẽ không tìm thấy WiFi nhà bạn trừ khi nhập đúng tên mạng thủ công.</li>
 </ol>
 
 <h2 class="text-2xl font-heading text-darkText mt-8 mb-3">Checklist áp dụng nhanh</h2>
 <ul class="list-disc pl-6 space-y-2 text-darkText/80">
-  <li>Khởi động lại modem/router đúng cách.</li>
-  <li>Đặt modem ở vị trí thông thoáng, gần trung tâm khu vực sử dụng.</li>
-  <li>Ưu tiên 5GHz cho thiết bị gần, 2.4GHz cho thiết bị xa.</li>
-  <li>Kiểm tra thiết bị lạ hoặc lưu lượng bất thường.</li>
-  <li>Đo lại tốc độ mạng sau mỗi thay đổi.</li>
+  <li>Đổi mật khẩu WiFi định kỳ ít nhất 3 tháng một lần.</li>
+  <li>Hạn chế chia sẻ mật khẩu chính cho người lạ, hãy dùng tính năng Guest Network (WiFi khách).</li>
+  <li>Luôn cập nhật Firmware mới nhất cho Router để vá các lỗ hổng bảo mật.</li>
 </ul>
 
 <h2 class="text-2xl font-heading text-darkText mt-8 mb-3">FAQ</h2>
 <ul class="list-disc pl-6 space-y-2 text-darkText/80">
-  <li><strong>Bao lâu nên kiểm tra lại tốc độ mạng?</strong> Nên kiểm tra định kỳ mỗi tuần hoặc khi có dấu hiệu chậm/rớt mạng bất thường.</li>
-<li><strong>Khi nào cần gọi kỹ thuật?</strong> Khi đã làm checklist tự kiểm tra nhưng mạng vẫn chậm, ping dao động cao hoặc mất kết nối lặp lại.</li>
-<li><strong>Có nên nâng gói ngay khi thấy chậm?</strong> Không nên nâng ngay. Cần xác định rõ lỗi do WiFi nội bộ hay do băng thông gói cước trước.</li>
+  <li><strong>Tôi có nên giới hạn địa chỉ MAC không?</strong> Có, lọc địa chỉ MAC (MAC Filtering) là lớp bảo mật cực tốt, chỉ những thiết bị được bạn đăng ký mới có thể truy cập mạng.</li>
+  <li><strong>Hacker có thể làm gì nếu vào được WiFi nhà tôi?</strong> Họ có thể theo dõi lưu lượng truy cập, cài đặt mã độc vào các thiết bị trong mạng hoặc chiếm quyền kiểm soát các thiết bị IoT như Camera, ổ khóa thông minh.</li>
 </ul>
 
 <h2 class="text-2xl font-heading text-darkText mt-8 mb-3">CTA</h2>
 <ul class="list-disc pl-6 space-y-2 text-darkText/80">
-  <li>Muốn tìm gói phù hợp: <a class="text-primary font-semibold hover:underline" href="/tim-goi-cuoc.html">Tìm gói cước</a>.</li>
-  <li>Muốn so sánh chi phí nhanh: <a class="text-primary font-semibold hover:underline" href="/bang-gia.html">Xem bảng giá</a>.</li>
-  <li>Cần tư vấn trực tiếp: gọi <a class="text-primary font-semibold hover:underline" href="tel:0822036382">0822 036 382</a>.</li>
+  <li>Đổi sang Modem VNPT đời mới tích hợp tường lửa bảo mật: <a class="text-primary font-semibold hover:underline" href="/tim-goi-cuoc.html">Tìm gói cước</a>.</li>
+  <li>Bảng giá các gói cước FiberVNN cho gia đình: <a class="text-primary font-semibold hover:underline" href="/bang-gia.html">Xem bảng giá</a>.</li>
+  <li>Tư vấn cấu hình bảo mật mạng doanh nghiệp & gia đình: gọi <a class="text-primary font-semibold hover:underline" href="tel:0822036382">0822 036 382</a>.</li>
 </ul>

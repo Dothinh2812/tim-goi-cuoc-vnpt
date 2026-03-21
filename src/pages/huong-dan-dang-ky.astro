@@ -107,7 +107,8 @@ const description = "Hướng dẫn chi tiết 3 bước đơn giản đăng ký
       <div class="bg-primary rounded-3xl p-8 text-center text-white mt-12 shadow-xl">
           <h2 class="text-2xl font-heading mb-4">Sẵn Sàng Trải Nghiệm Internet VNPT?</h2>
           <p class="text-white/80 mb-6">Liên hệ với chúng tôi để được lắp đặt ngay hôm nay!</p>
-          <a href="tel:0822036382" class="bg-accent hover:opacity-90 text-white px-8 py-3 rounded-full font-bold text-lg inline-flex items-center justify-center gap-2 shadow-lg transition-transform hover:-translate-y-1">
+          <a href="tel:0822036382" class="bg-accent hover:opacity-90 text-white px-8 py-3 rounded-full font-bold text-lg inline-flex items-center justify-center gap-2 shadow-lg transition-transform hover:-translate-y-1"
+              data-smart-cta="call-cta">
               Gọi Ngay: 0822 036 382
           </a>
       </div>
@@ -120,3 +121,6 @@ const description = "Hướng dẫn chi tiết 3 bước đơn giản đăng ký
 <style is:global>
   .step-number { text-shadow: 2px 2px 0px rgba(0, 51, 153, 0.1); }
 </style>
+<script>
+  import '../scripts/smart-cta.ts';
+</script>

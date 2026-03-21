@@ -32,7 +32,7 @@ export default defineConfig({
   site,
   output: 'static',
   build: {
-    format: 'file',
+    format: 'preserve',
   },
   vite: {
     plugins: [rewriteHtmlRoutesForDev(), tailwindcss()],
