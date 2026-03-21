@@ -22,7 +22,7 @@ function _isMobile() {
 }
 function getSmartCtaHtml(phoneLabel: string, zaloLabel: string) {
   if (_isMobile()) {
-    return `<a href="tel:18001166" class="btn-register">📞 ${phoneLabel}</a>`;
+    return `<a href="tel:0822036382" class="btn-register">📞 ${phoneLabel}</a>`;
   }
   return `<a href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" class="btn-register">💬 ${zaloLabel}</a>`;
 }
@@ -377,7 +377,7 @@ function showDetail(pkgId) {
 </table>
 ${p.category === 'tv' ? '<p style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-muted);">(*) Gói truyền hình dành cho khách hàng đang sử dụng Internet VNPT. 1 tài khoản xem trên tối đa 5 thiết bị, đồng thời 2 thiết bị. Hỗ trợ 4K.</p>' : ''}
 <div class="modal-cta">
-  ${getSmartCtaHtml('Đăng ký ngay – 1800.1166', 'Chat Zalo đăng ký ngay')}
+  ${getSmartCtaHtml('Đăng ký ngay – Hotline 0822 036 382', 'Chat Zalo đăng ký ngay')}
 </div>`;
     modal.classList.add('open');
 }
@@ -461,7 +461,7 @@ function showCompareModal() {
   </div>
 </div>
 <div class="modal-cta">
-  ${getSmartCtaHtml('Tư vấn đăng ký – 1800.1166', 'Chat Zalo tư vấn đăng ký')}
+  ${getSmartCtaHtml('Tư vấn đăng ký – Hotline 0822 036 382', 'Chat Zalo tư vấn đăng ký')}
 </div>`;
     modal.classList.add('open');
 }

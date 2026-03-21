@@ -46,11 +46,21 @@ function swapCtaForDesktop(): void {
         }
       });
     } else if (ctaType === 'call-hotline') {
-      // "Tổng đài: 1800.1166" — keep as is (toll-free hotline)
-      // Don't swap this one
-      el.href = `tel:18001166`;
-      el.removeAttribute('target');
-      el.removeAttribute('rel');
+      // It is now a 'Hotline 0822 036 382'
+      const svgEl = el.querySelector('svg');
+      const zaloSvg = createZaloIcon();
+      if (svgEl) {
+        svgEl.replaceWith(zaloSvg);
+      } else {
+        // Since there is no icon initially, we insert the Zalo icon
+        el.insertBefore(zaloSvg, el.firstChild);
+      }
+      const textNodes = Array.from(el.childNodes).filter(n => n.nodeType === Node.TEXT_NODE);
+      textNodes.forEach(n => {
+        if (n.textContent && n.textContent.trim().includes('0822')) {
+          n.textContent = ' Chat Zalo Hotline ';
+        }
+      });
     } else if (ctaType === 'call-cta') {
       // Generic CTA button with phone icon + text
       const svgEl = el.querySelector('svg');
