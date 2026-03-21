@@ -9,21 +9,46 @@ const title = "Tra Cứu Gói Cước VNPT Hà Nội 2026";
 const description = "Tra cứu và so sánh gói cước Internet, Truyền hình, Combo VNPT Hà Nội 2026. Tìm gói phù hợp theo nhu cầu và ngân sách của bạn.";
 ---
 
-<BaseLayout title={title} description={description} canonicalPath="/tim-goi-cuoc.html" bodyClass="">
+<BaseLayout title={title} description={description} canonicalPath="/tim-goi-cuoc.html" bodyClass="bg-surface antialiased">
   <SiteHeader currentPath="/tim-goi-cuoc.html" />
   
-  <div class="hero">
-    <div class="hero-badge">Bảng giá chính thức · Cập nhật 2026</div>
-    <h1>Tìm Gói Cước VNPT<br>Phù Hợp Với Bạn</h1>
-    <p>Tra cứu Internet, Truyền hình và Combo VNPT Hà Nội. Chọn theo gói hoặc để chúng tôi gợi ý dựa trên nhu cầu thực tế của bạn.</p>
-  </div>
+  <section class="finder-hero-block">
+    <div class="finder-shell">
+      <div class="finder-hero-copy">
+        <span class="finder-eyebrow uppercase font-bold tracking-wider">Công cụ tra cứu gói cước VNPT Hà Nội 2026</span>
+        <h1 class="text-4xl md:text-5xl font-heading text-darkText uppercase tracking-tight mb-4">Tìm Gói Cước Phù Hợp Với Nhu Cầu Của Bạn</h1>
+        <p>Tra cứu Internet, Truyền hình và Combo VNPT Hà Nội theo khu vực, tốc độ, tính năng và ngân sách. Nếu chưa chắc nên chọn gói nào, chuyển sang chế độ gợi ý để rút gọn lựa chọn nhanh hơn.</p>
+      </div>
 
-  <main class="tabs-wrapper">
-    <div class="tabs-nav">
-      <button class="tab-btn active" data-tab="tab1" id="tab-btn-1"><span class="tab-icon">🔍</span> Tìm theo Gói và Giá</button>
-      <button class="tab-btn" data-tab="tab2" id="tab-btn-2"><span class="tab-icon">🎯</span> Gợi ý theo Nhu Cầu</button>
+      <div class="finder-overview">
+        <div class="finder-overview-card">
+          <strong>Lọc theo nhu cầu thực tế</strong>
+          <span>Chọn khu vực, tốc độ, thời hạn thanh toán và tính năng đi kèm chỉ trong một màn hình.</span>
+        </div>
+        <div class="finder-overview-card">
+          <strong>So sánh nhanh các gói</strong>
+          <span>Xem song song giá nội thành, ngoại thành và điểm khác nhau giữa các gói đang quan tâm.</span>
+        </div>
+        <div class="finder-overview-card">
+          <strong>Nhận gợi ý nếu chưa rõ</strong>
+          <span>Dùng chế độ khảo sát để tìm gói hợp cho gia đình, xem TV, camera hoặc làm việc tại nhà.</span>
+        </div>
+      </div>
     </div>
+  </section>
 
+  <section class="finder-tab-section">
+    <div class="finder-shell">
+      <div class="finder-tab-card">
+        <div class="tabs-nav finder-tab-group">
+          <button class="tab-btn active" data-tab="tab1" id="tab-btn-1"><span class="tab-icon">🔍</span> Tìm theo Gói và Giá</button>
+          <button class="tab-btn" data-tab="tab2" id="tab-btn-2"><span class="tab-icon">🎯</span> Gợi ý theo Nhu Cầu</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="tabs-wrapper finder-shell finder-main">
     <div class="tab-panel active" id="tab1">
       <div class="filter-section">
         <h3>Bộ lọc</h3>
@@ -92,7 +117,7 @@ const description = "Tra cứu và so sánh gói cước Internet, Truyền hìn
     </div>
 
     <div class="tab-panel" id="tab2">
-      <div class="wizard-container">
+      <div class="wizard-container finder-wizard-shell">
         <div class="wizard-progress" id="wizard-progress">
           <div class="progress-info">
             <span class="progress-label">Tiến trình</span>
