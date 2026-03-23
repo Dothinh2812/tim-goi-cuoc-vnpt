@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+import logoImage from '../assets/images/logo-vnpt.png';
 import { siteConfig } from '../config/site';
 
 interface Props {
@@ -14,7 +16,16 @@ const { currentPath = Astro.url.pathname } = Astro.props;
       
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 group shrink-0">
-        <img src="/logo-vnpt.png" alt="VNPT Logo" class="h-10 md:h-12 w-auto object-contain group-hover:scale-105 transition-transform" />
+        <Picture
+          src={logoImage}
+          alt="VNPT Logo"
+          formats={['avif']}
+          fallbackFormat="webp"
+          width={192}
+          densities={[1, 2]}
+          quality={80}
+          class="h-10 md:h-12 w-auto object-contain group-hover:scale-105 transition-transform"
+        />
         <span class="font-heading text-lg xl:text-xl font-bold text-primary max-w-[150px] sm:max-w-none leading-tight sm:leading-normal">Đăng ký dịch vụ VNPT Hà Nội</span>
       </a>
       
