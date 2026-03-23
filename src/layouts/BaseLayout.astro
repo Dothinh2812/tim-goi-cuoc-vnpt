@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   canonicalPath?: string;
   bodyClass?: string;
+  robots?: string;
   structuredData?: Array<Record<string, unknown>>;
 }
 
@@ -16,12 +17,13 @@ const {
   description = '',
   canonicalPath = Astro.url.pathname,
   bodyClass = '',
+  robots,
   structuredData = [],
 } = Astro.props;
 
 const gtagId = getGtagId();
 const siteUrl = getSiteUrl();
-const noIndex = shouldNoIndex();
+const robotsContent = robots || (shouldNoIndex() ? 'noindex, nofollow' : 'index, follow');
 const canonicalUrl = siteUrl ? toAbsoluteUrl(canonicalPath) : '';
 const ogType = canonicalPath.startsWith('/blog-content/') ? 'article' : 'website';
 ---
@@ -34,11 +36,7 @@ const ogType = canonicalPath.startsWith('/blog-content/') ? 'article' : 'website
     <link rel="icon" type="image/png" href="/logo-vnpt.png" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
-    {noIndex ? (
-      <meta name="robots" content="noindex, nofollow" />
-    ) : (
-      <meta name="robots" content="index, follow" />
-    )}
+    <meta name="robots" content={robotsContent} />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <meta property="og:locale" content="vi_VN" />
     <meta property="og:type" content={ogType} />

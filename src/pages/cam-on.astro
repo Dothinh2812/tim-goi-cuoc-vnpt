@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import FloatingCtas from '../components/FloatingCtas.astro';
+import { siteConfig } from '../config/site';
+
+const title = 'Cảm ơn bạn đã đăng ký | VNPT Hà Nội';
+const description =
+  'Cảm ơn bạn đã để lại thông tin. Tư vấn viên VNPT Hà Nội sẽ liên hệ lại để xác nhận nhu cầu và lịch lắp đặt.';
+
+const nextSteps = [
+  {
+    number: '1',
+    title: 'Tư vấn viên gọi lại trong 30 phút',
+    description: 'Xác nhận nhu cầu, tư vấn gói cước phù hợp và chốt lịch hẹn kỹ thuật.',
+  },
+  {
+    number: '2',
+    title: 'Ký hợp đồng điện tử trong 5 phút',
+    description: 'Chụp 2 mặt CCCD gửi qua Zalo. Hoàn toàn online, không cần tới điểm giao dịch.',
+  },
+  {
+    number: '3',
+    title: 'Kỹ thuật lắp đặt trong 12-24 giờ',
+    description: 'Kỹ thuật viên đến tận nơi, kiểm tra tín hiệu ổn định rồi mới nghiệm thu.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/cam-on.html"
+  robots="noindex, nofollow"
+  bodyClass="bg-[#f5f7fa] antialiased"
+>
+  <SiteHeader currentPath="/cam-on.html" />
+
+  <main class="min-h-screen px-4 pb-12 pt-32 sm:px-6 lg:px-8">
+    <div class="mx-auto flex max-w-5xl items-center justify-center">
+      <section class="w-full max-w-2xl rounded-[28px] border border-slate-200 bg-white px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] sm:px-10 sm:py-12">
+        <div class="mx-auto mb-6 flex h-[72px] w-[72px] items-center justify-center rounded-full bg-emerald-50">
+          <svg viewBox="0 0 36 36" fill="none" class="h-9 w-9" aria-hidden="true">
+            <circle cx="18" cy="18" r="18" fill="#4caf50" opacity="0.15"></circle>
+            <path
+              d="M10 18.5L15.5 24L26 13"
+              stroke="#2e7d32"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </svg>
+        </div>
+
+        <div class="text-center">
+          <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            Đã nhận thông tin của bạn
+          </h1>
+          <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-slate-600 sm:text-lg">
+            Tư vấn viên VNPT sẽ gọi lại cho bạn trong vòng <strong class="text-primary">30 phút</strong>
+            để tư vấn gói cước phù hợp và xác nhận lịch lắp đặt.
+          </p>
+        </div>
+
+        <div class="mt-8 rounded-3xl border border-slate-200 bg-slate-50/70 p-5 sm:p-6">
+          <p class="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
+            Quy trình tiếp theo
+          </p>
+
+          <div class="space-y-4">
+            {nextSteps.map((step) => (
+              <div class="flex items-start gap-4 rounded-2xl bg-white px-4 py-4 shadow-sm">
+                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
+                  {step.number}
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-slate-900 sm:text-base">{step.title}</p>
+                  <p class="mt-1 text-sm leading-6 text-slate-600">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-3">
+          <a
+            href={`tel:${siteConfig.phoneRaw}`}
+            class="inline-flex items-center justify-center rounded-2xl bg-primary px-5 py-4 text-base font-bold text-white shadow-lg shadow-primary/25 transition hover:bg-blue-700"
+          >
+            Gọi ngay: {siteConfig.phoneDisplay}
+          </a>
+          <a
+            href={siteConfig.zaloUrl}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center justify-center rounded-2xl border border-sky-200 bg-sky-50 px-5 py-4 text-base font-bold text-primary transition hover:bg-sky-100"
+          >
+            Nhắn Zalo để được tư vấn nhanh hơn
+          </a>
+        </div>
+
+        <div class="mt-8 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-4 text-sm leading-6 text-slate-700">
+          Nếu sau 30 phút chưa nhận được cuộc gọi, vui lòng chủ động liên hệ hotline
+          <a href={`tel:${siteConfig.phoneRaw}`} class="font-bold text-primary hover:underline">
+            {siteConfig.phoneDisplay}
+          </a>
+          . Thời gian hỗ trợ: 7:30 - 21:00 hàng ngày, kể cả thứ 7 và chủ nhật.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <SiteFooter />
+  <FloatingCtas />
+</BaseLayout>

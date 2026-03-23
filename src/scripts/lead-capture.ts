@@ -1,4 +1,5 @@
 const GOOGLE_SCRIPT_URL = import.meta.env.PUBLIC_GOOGLE_SCRIPT_URL || '';
+const THANK_YOU_PATH = '/cam-on.html';
 
 function getLeadForm() {
   const phoneInput = document.getElementById('bottomPhone') as HTMLInputElement | null;
@@ -55,6 +56,17 @@ function buildPayload(phone: string) {
     user_agent: navigator.userAgent || '',
     ...getUtmParams(),
   };
+}
+
+function getThankYouUrl() {
+  const currentUrl = new URL(window.location.href);
+  const thankYouUrl = new URL(THANK_YOU_PATH, currentUrl.origin);
+
+  if (currentUrl.search) {
+    thankYouUrl.search = currentUrl.search;
+  }
+
+  return thankYouUrl.toString();
 }
 
 async function submitLead(payload: ReturnType<typeof buildPayload>) {
@@ -125,8 +137,7 @@ function wireLeadForm() {
     try {
       await submitLead(buildPayload(phone));
       form.reset();
-      statusEl.textContent = 'Cam on ban. Chung toi se lien he trong thoi gian som nhat.';
-      statusEl.style.display = 'block';
+      window.location.assign(getThankYouUrl());
     } catch (error) {
       statusEl.textContent =
         error instanceof Error && error.message === 'access_denied'

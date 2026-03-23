@@ -1,11 +1,11 @@
 ---
 import { siteConfig } from '../config/site';
 
-// Helper to group links since they are flat in siteConfig
 const exploreLinks = [
   { href: '/bang-gia.html', label: 'Bảng giá' },
   { href: '/tim-goi-cuoc.html', label: 'Tìm gói cước' },
   { href: '/blog.html', label: 'Blog' },
+  { href: '/lien-he.html', label: 'Liên hệ' },
   { href: '/gioi-thieu.html', label: 'Giới thiệu' },
 ];
 
@@ -17,30 +17,33 @@ const legalLinks = [
 ];
 ---
 
-<footer class="bg-gradient-to-br from-[#001c54] to-[#003399] text-white pt-16 pb-8 relative overflow-hidden">
-  <!-- Subtle Wave Pattern Background -->
-  <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23FFFFFF' fill-opacity='1' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: bottom; background-size: cover;"></div>
+<footer class="relative overflow-hidden bg-gradient-to-br from-[#001c54] to-[#003399] pb-8 pt-16 text-white">
+  <div
+    class="pointer-events-none absolute inset-0 opacity-5"
+    style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23FFFFFF' fill-opacity='1' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: bottom; background-size: cover;"
+  ></div>
 
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-      
-      <!-- Column 1: Brand -->
+  <div class="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
       <div class="space-y-4">
-        <a href="/" class="inline-block bg-white p-2 rounded-xl shadow-sm">
+        <a href="/" class="inline-block rounded-xl bg-white p-2 shadow-sm">
           <img src="/logo-vnpt.png" alt="VNPT Logo" class="h-10 w-auto object-contain" />
         </a>
-        <p class="text-white/70 text-sm leading-relaxed mt-4">
-          Cung cấp dịch vụ Internet cáp quang, Truyền hình MyTV và các giải pháp viễn thông số 1 tại Hà Nội. Nhanh chóng, ổn định và chuyên nghiệp.
+        <p class="mt-4 text-sm leading-relaxed text-white/70">
+          Cung cấp dịch vụ Internet cáp quang, Truyền hình MyTV và các giải pháp viễn thông số 1 tại Hà Nội.
+          Nhanh chóng, ổn định và chuyên nghiệp.
         </p>
       </div>
 
-      <!-- Column 2: Explore -->
       <div>
-        <h3 class="font-heading text-lg font-bold mb-4 text-white">Khám phá</h3>
+        <h3 class="mb-4 text-lg font-bold text-white font-heading">Khám phá</h3>
         <ul class="space-y-3">
-          {exploreLinks.map(link => (
+          {exploreLinks.map((link) => (
             <li>
-              <a href={link.href} class="text-white/70 hover:text-white hover:translate-x-1 inline-block transition-all text-sm font-medium">
+              <a
+                href={link.href}
+                class="inline-block text-sm font-medium text-white/70 transition-all hover:translate-x-1 hover:text-white"
+              >
                 {link.label}
               </a>
             </li>
@@ -48,13 +51,15 @@ const legalLinks = [
         </ul>
       </div>
 
-      <!-- Column 3: Legal & Support -->
       <div>
-        <h3 class="font-heading text-lg font-bold mb-4 text-white">Hỗ trợ & Pháp lý</h3>
+        <h3 class="mb-4 text-lg font-bold text-white font-heading">Hỗ trợ & Pháp lý</h3>
         <ul class="space-y-3">
-          {legalLinks.map(link => (
+          {legalLinks.map((link) => (
             <li>
-              <a href={link.href} class="text-white/70 hover:text-white hover:translate-x-1 inline-block transition-all text-sm font-medium">
+              <a
+                href={link.href}
+                class="inline-block text-sm font-medium text-white/70 transition-all hover:translate-x-1 hover:text-white"
+              >
                 {link.label}
               </a>
             </li>
@@ -62,48 +67,50 @@ const legalLinks = [
         </ul>
       </div>
 
-      <!-- Column 4: Contact -->
       <div>
-        <h3 class="font-heading text-lg font-bold mb-4 text-white">Liên hệ</h3>
+        <h3 class="mb-4 text-lg font-bold text-white font-heading">Liên hệ</h3>
         <ul class="space-y-4">
           <li class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-[#0099CC] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="mt-0.5 h-5 w-5 shrink-0 text-[#0099CC]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-            <span class="text-white/70 text-sm leading-relaxed">{siteConfig.address}</span>
+            <span class="text-sm leading-relaxed text-white/70">{siteConfig.address}</span>
           </li>
           <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-[#0099CC] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="h-5 w-5 shrink-0 text-[#0099CC]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
-            <a href={`tel:${siteConfig.phoneRaw}`} class="text-white/70 hover:text-white font-bold transition-colors">
+            <a href={`tel:${siteConfig.phoneRaw}`} class="font-bold text-white/70 transition-colors hover:text-white">
               {siteConfig.phoneDisplay}
             </a>
           </li>
           <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-[#0099CC] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="h-5 w-5 shrink-0 text-[#0099CC]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            <a href={`mailto:${siteConfig.email}`} class="text-white/70 hover:text-white transition-colors text-sm">
+            <a href={`mailto:${siteConfig.email}`} class="text-sm text-white/70 transition-colors hover:text-white">
               {siteConfig.email}
             </a>
           </li>
         </ul>
       </div>
-
     </div>
 
-    <!-- Bottom Bar -->
-    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="text-white/50 text-xs text-center md:text-left">
+    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
+      <div class="text-center text-xs text-white/50 md:text-left">
         <p>&copy; {new Date().getFullYear()} {siteConfig.name}. Quản lý bởi: {siteConfig.employeeName} - Mã NV: {siteConfig.employeeCode}</p>
         <p class="mt-1">{siteConfig.legalDisclaimer}</p>
       </div>
-      <div class="text-white/50 text-xs">
-        <a href={siteConfig.officialWebsite} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-1">
+      <div class="text-xs text-white/50">
+        <a
+          href={siteConfig.officialWebsite}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-1 transition-colors hover:text-white"
+        >
           Website chính thức Tập đoàn
-          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
         </a>

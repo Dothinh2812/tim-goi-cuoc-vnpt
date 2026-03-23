@@ -3,53 +3,222 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import FloatingCtas from '../components/FloatingCtas.astro';
+import { siteConfig } from '../config/site';
 
-const title = "Liên hệ - Đăng ký Internet VNPT Hà Nội";
-const description = "Liên hệ tư vấn và đăng ký lắp đặt Internet cáp quang VNPT tại Hà Nội. Hotline: 0822 036 382.";
+const title = 'Liên hệ | Đăng ký Internet VNPT Hà Nội';
+const description =
+  'Liên hệ tư vấn lắp mạng VNPT tại Hà Nội. Hotline: 0822 036 382, hỗ trợ 7:30-21:00 hàng ngày. Địa chỉ: 75 Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội.';
+
+const directContacts = [
+  {
+    href: `tel:${siteConfig.phoneRaw}`,
+    icon: '📞',
+    iconClass: 'bg-blue-100',
+    hoverClass: 'hover:bg-blue-50',
+    label: 'Hotline tư vấn',
+    value: siteConfig.phoneDisplay,
+    note: 'Gọi trực tiếp, phản hồi nhanh',
+  },
+  {
+    href: siteConfig.zaloUrl,
+    target: '_blank',
+    rel: 'noopener',
+    icon: '💬',
+    iconClass: 'bg-emerald-100',
+    hoverClass: 'hover:bg-emerald-50',
+    label: 'Zalo',
+    value: 'Chat qua Zalo',
+    note: 'Nhắn tin tư vấn, gửi bảng giá và đặt lịch nhanh',
+  },
+  {
+    href: `mailto:${siteConfig.email}`,
+    icon: '✉️',
+    iconClass: 'bg-amber-100',
+    hoverClass: 'hover:bg-amber-50',
+    label: 'Email',
+    value: siteConfig.email,
+    note: 'Phản hồi trong vòng 24 giờ làm việc',
+  },
+];
+
+const supportHours = [
+  { day: 'Thứ Hai - Thứ Sáu', hours: '7:30 - 21:00', badge: 'Mở cửa', badgeClass: 'bg-emerald-100 text-emerald-700' },
+  { day: 'Thứ Bảy', hours: '8:00 - 20:00', badge: 'Mở cửa', badgeClass: 'bg-emerald-100 text-emerald-700' },
+  { day: 'Chủ Nhật', hours: '8:00 - 18:00', badge: 'Giới hạn', badgeClass: 'bg-amber-100 text-amber-700' },
+  { day: 'Lễ, Tết', hours: 'Theo thông báo riêng' },
+];
+
 ---
 
-<BaseLayout title={title} description={description} canonicalPath="/lien-he.html">
-  <SiteHeader />
-  
-  <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-heading text-darkText mb-8">Liên hệ</h1>
+<BaseLayout title={title} description={description} canonicalPath="/lien-he.html" bodyClass="bg-[#f7f8fa]">
+  <SiteHeader currentPath="/lien-he.html" />
 
-        <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-primary/5 space-y-8 text-darkText/80 leading-relaxed">
-            <p>Nếu bạn cần tư vấn về các gói dịch vụ Internet cáp quang hoặc đăng ký lắp đặt tại Hà Nội, vui lòng liên hệ với chúng tôi qua các thông tin sau:</p>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Hotline -->
-                <div class="bg-surface rounded-2xl p-6 text-center border border-primary/5">
-                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">📞</div>
-                    <h3 class="font-heading text-lg text-darkText mb-2">Hotline</h3>
-                    <a href="tel:0822036382" class="text-primary font-bold text-xl hover:underline">0822 036 382</a>
-                </div>
-                <!-- Email -->
-                <div class="bg-surface rounded-2xl p-6 text-center border border-primary/5">
-                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">✉️</div>
-                    <h3 class="font-heading text-lg text-darkText mb-2">Email</h3>
-                    <a href="mailto:thinhdx.hni@vnpt.vn" class="text-primary font-bold hover:underline">thinhdx.hni@vnpt.vn</a>
-                </div>
-                <!-- Địa chỉ -->
-                <div class="bg-surface rounded-2xl p-6 text-center border border-primary/5">
-                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">📍</div>
-                    <h3 class="font-heading text-lg text-darkText mb-2">Địa chỉ</h3>
-                    <p class="text-darkText/70 font-medium">75 Đinh Tiên Hoàng<br>Hoàn Kiếm, Hà Nội</p>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-200 pt-6">
-                <h2 class="text-2xl font-heading text-darkText mb-4">Thời gian hỗ trợ khách hàng</h2>
-                <div class="bg-surface rounded-2xl p-6 inline-block border border-primary/5">
-                    <p class="font-semibold text-darkText text-lg">Thứ Hai – Chủ Nhật</p>
-                    <p class="text-primary font-bold text-2xl">08:00 – 21:00</p>
-                </div>
-            </div>
-
-            <p>Bạn cũng có thể gọi điện trực tiếp theo số hotline trên website, chúng tôi sẽ liên hệ lại trong thời gian sớm nhất để hỗ trợ tư vấn và đăng ký lắp đặt.</p>
+  <main class="pb-20">
+    <section class="bg-[linear-gradient(135deg,#0055cc_0%,#1a7f4b_100%)] px-4 pb-10 pt-28 text-white sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-5xl text-center">
+        <p class="mb-4 text-sm text-white/75">
+          <a href="/" class="font-semibold text-white hover:underline">Trang chủ</a>
+          <span class="mx-2 text-white/50">/</span>
+          <span>Liên hệ</span>
+        </p>
+        <div class="mx-auto max-w-3xl">
+          <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+            Liên hệ tư vấn lắp mạng VNPT
+          </h1>
+          <p class="mt-4 text-base leading-7 text-white/85 sm:text-lg">
+            Gọi điện, nhắn Zalo hoặc để lại thông tin. Tư vấn viên sẽ phản hồi trong vòng 30 phút.
+          </p>
         </div>
-    </main>
-  
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-4 pt-10 sm:px-6 lg:px-8">
+      <div class="grid gap-6 lg:grid-cols-[1fr_0.92fr]">
+        <article class="rounded-[22px] bg-white p-6 shadow-[0_2px_20px_rgba(0,0,0,0.08)] sm:p-7">
+          <p class="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-slate-400">
+            Kênh liên hệ trực tiếp
+          </p>
+
+          <div class="space-y-4">
+            {directContacts.map((contact) => (
+              <a
+                href={contact.href}
+                target={contact.target}
+                rel={contact.rel}
+                class:list={[
+                  'flex items-start gap-4 rounded-2xl bg-slate-50 px-4 py-4 transition duration-150 hover:translate-x-1',
+                  contact.hoverClass,
+                ]}
+              >
+                <div class:list={['flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-xl', contact.iconClass]}>
+                  {contact.icon}
+                </div>
+                <div>
+                  <p class="mb-1 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                    {contact.label}
+                  </p>
+                  <p class="text-base font-bold text-slate-900">{contact.value}</p>
+                  <p class="mt-1 text-sm leading-6 text-slate-500">{contact.note}</p>
+                </div>
+              </a>
+            ))}
+
+            <div class="flex items-start gap-4 rounded-2xl bg-slate-50 px-4 py-4">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-200 text-xl">
+                📍
+              </div>
+              <div>
+                <p class="mb-1 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                  Địa chỉ
+                </p>
+                <p class="text-sm font-bold leading-6 text-slate-900 sm:text-base">{siteConfig.address}</p>
+                <p class="mt-1 text-sm leading-6 text-slate-500">
+                  Gần Hồ Hoàn Kiếm. Khu vực phục vụ: toàn Hà Nội.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="space-y-6">
+          <article class="rounded-[22px] bg-white p-6 shadow-[0_2px_20px_rgba(0,0,0,0.08)] sm:p-7">
+            <p class="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-slate-400">
+              Giờ hỗ trợ
+            </p>
+
+            <div class="divide-y divide-slate-200">
+              {supportHours.map((row) => (
+                <div class="flex items-start justify-between gap-4 py-3 first:pt-0 last:pb-0">
+                  <p class="text-sm text-slate-700">{row.day}</p>
+                  <div class="text-right">
+                    <p class="text-sm font-bold text-primary">{row.hours}</p>
+                    {row.badge && (
+                      <span class:list={['mt-1 inline-flex rounded-full px-2.5 py-1 text-[11px] font-bold', row.badgeClass]}>
+                        {row.badge}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p class="mt-4 text-sm leading-6 text-slate-500">
+              Kỹ thuật lắp đặt hoạt động <strong>7 ngày/tuần</strong>, kể cả cuối tuần theo lịch hẹn.
+            </p>
+          </article>
+
+          <article class="rounded-[22px] bg-white p-6 shadow-[0_2px_20px_rgba(0,0,0,0.08)] sm:p-7">
+            <p class="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-slate-400">
+              Nhân viên phụ trách
+            </p>
+
+            <div class="mb-4 flex items-center gap-4 rounded-2xl bg-slate-50 p-4">
+              <div class="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#0055cc,#1a7f4b)] text-lg font-bold text-white">
+                Đ
+              </div>
+              <div>
+                <p class="text-base font-extrabold text-slate-900">{siteConfig.employeeName}</p>
+                <p class="text-sm text-slate-500">Nhân viên kinh doanh VNPT Hà Nội</p>
+                <span class="mt-2 inline-flex rounded-md bg-blue-100 px-2.5 py-1 text-[11px] font-bold text-primary">
+                  Mã NV: {siteConfig.employeeCode}
+                </span>
+              </div>
+            </div>
+
+            <p class="text-sm leading-6 text-slate-600">
+              Phụ trách tư vấn, hỗ trợ đăng ký và chăm sóc khách hàng sau lắp đặt tại khu vực Hà Nội.
+              Liên hệ trực tiếp để được hỗ trợ nhanh nhất.
+            </p>
+          </article>
+        </div>
+
+        <section class="overflow-hidden rounded-[22px] bg-white shadow-[0_2px_20px_rgba(0,0,0,0.08)] lg:col-span-2">
+          <div class="flex flex-col gap-4 border-b border-slate-200 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7">
+            <div>
+              <h2 class="text-lg font-extrabold text-slate-900">
+                75 Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội
+              </h2>
+              <p class="mt-1 text-sm text-slate-500">
+                Văn phòng làm việc, gần Hồ Hoàn Kiếm, trung tâm Hà Nội.
+              </p>
+            </div>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=75+Đinh+Tiên+Hoàng,+Hoàn+Kiếm,+Hà+Nội"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-xl bg-primary px-4 py-3 text-sm font-bold text-white transition hover:bg-blue-700"
+            >
+              Chỉ đường
+            </a>
+          </div>
+
+          <iframe
+            class="block h-[320px] w-full border-0 sm:h-[360px]"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0968883528!2d105.85174!3d21.02826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab953033f%3A0x26ea19b0b8a6a0fa!2s75%20%C4%90inh%20Ti%C3%AAn%20Ho%C3%A0ng%2C%20Ho%C3%A0n%20Ki%E1%BA%BFm%2C%20H%C3%A0%20N%E1%BB%99i!5e0!3m2!1svi!2svn!4v1710000000000"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Bản đồ địa chỉ 75 Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội"
+          ></iframe>
+        </section>
+
+        <aside class="rounded-2xl border border-amber-300 bg-amber-50 px-5 py-4 text-sm leading-7 text-amber-900 lg:col-span-2">
+          <strong>Lưu ý:</strong> Đây là website của <strong>kênh nhân viên/đại lý VNPT</strong>, không phải website chính thức của Tập đoàn VNPT.
+          Xem chi tiết tại <a href="/tuyen-bo-minh-bach.html" class="font-bold underline underline-offset-2">Tuyên bố minh bạch</a>.
+          Website chính thức của VNPT Hà Nội:
+          <a href="https://vnpthanoi.com.vn" target="_blank" rel="noopener" class="font-bold underline underline-offset-2">
+            vnpthanoi.com.vn
+          </a>
+          . Tổng đài VNPT:
+          <a href={`tel:${siteConfig.hotlineRaw}`} class="font-bold underline underline-offset-2">
+            {siteConfig.hotlineDisplay}
+          </a>
+          .
+        </aside>
+      </div>
+    </section>
+  </main>
+
   <SiteFooter />
   <FloatingCtas />
 </BaseLayout>
