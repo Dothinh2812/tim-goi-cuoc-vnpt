@@ -47,7 +47,7 @@ const legalLinks = [
       </div>
 
       <div>
-        <h3 class="mb-4 text-lg font-bold text-white font-heading">Khám phá</h3>
+        <h3 class="mb-4 font-heading text-lg font-bold text-white">Khám phá</h3>
         <ul class="space-y-3">
           {exploreLinks.map((link) => (
             <li>
@@ -63,7 +63,7 @@ const legalLinks = [
       </div>
 
       <div>
-        <h3 class="mb-4 text-lg font-bold text-white font-heading">Hỗ trợ & Pháp lý</h3>
+        <h3 class="mb-4 font-heading text-lg font-bold text-white">Hỗ trợ & Pháp lý</h3>
         <ul class="space-y-3">
           {legalLinks.map((link) => (
             <li>
@@ -79,7 +79,7 @@ const legalLinks = [
       </div>
 
       <div>
-        <h3 class="mb-4 text-lg font-bold text-white font-heading">Liên hệ</h3>
+        <h3 class="mb-4 font-heading text-lg font-bold text-white">Liên hệ</h3>
         <ul class="space-y-4">
           <li class="flex items-start gap-3">
             <svg class="mt-0.5 h-5 w-5 shrink-0 text-[#0099CC]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -108,10 +108,23 @@ const legalLinks = [
       </div>
     </div>
 
+    <div class="mb-6 rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#8fd8ff]">Lưu ý minh bạch</p>
+      <p class="mt-2 max-w-4xl text-base leading-relaxed text-white/90">{siteConfig.legalDisclaimer}</p>
+      <a
+        href="/tuyen-bo-minh-bach.html"
+        class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-[#8fd8ff]"
+      >
+        Xem tuyên bố minh bạch
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+
     <div class="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
-      <div class="text-center text-xs text-white/50 md:text-left">
+      <div class="text-center text-sm text-white/60 md:text-left">
         <p>&copy; {new Date().getFullYear()} {siteConfig.name}. Quản lý bởi: {siteConfig.employeeName} - Mã NV: {siteConfig.employeeCode}</p>
-        <p class="mt-1">{siteConfig.legalDisclaimer}</p>
       </div>
       <div class="text-xs text-white/50">
         <a
