@@ -1,4 +1,5 @@
 ---
+import faviconImage from '../assets/images/logo_web.png';
 import { getGtagId, getSiteUrl, siteConfig } from '../config/site';
 import { shouldNoIndex, toAbsoluteUrl } from '../lib/seo';
 import '../styles/global.css';
@@ -46,6 +47,8 @@ const ogType = canonicalPath.startsWith('/blog-content/') ? 'article' : 'website
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     {description && <meta name="twitter:description" content={description} />}
+    <link rel="icon" type="image/png" href={faviconImage.src} />
+    <link rel="apple-touch-icon" href={faviconImage.src} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

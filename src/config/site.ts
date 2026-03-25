@@ -9,7 +9,7 @@ export const siteConfig = {
   email: 'thinhdx.hni@vnpt.vn',
   address: '75 Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội',
   employeeName: 'Đỗ Xuân Thịnh',
-  employeeCode: 'VNPT016320',
+  employeeCode: '002120',
   officialWebsite: 'https://vnpt.com.vn/',
   legalDisclaimer:
     'Website kênh đại lý/nhân viên VNPT. Không phải website chính thức của Tập đoàn VNPT.',

@@ -4,3 +4,5 @@ dist/
 .npm-cache/
 
 .vercel
+astro-dev.log
+astro-dev.err.log

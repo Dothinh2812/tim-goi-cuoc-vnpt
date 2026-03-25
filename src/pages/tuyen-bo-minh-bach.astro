@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+import employeeCardImage from '../assets/images/thinh.png';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -28,14 +30,33 @@ const description = "Tuyên bố minh bạch về website dangky-vnpt.online, th
         <div class="space-y-8">
             <section class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-primary/5">
                 <h2 class="text-2xl font-heading text-darkText mb-5">1. Thông tin quản lý website</h2>
-                <ul class="space-y-3 text-darkText/80">
-                    <li><strong>Họ tên:</strong> Đỗ Xuân Thịnh</li>
-                    <li><strong>Mã nhân viên:</strong> VNPT016320</li>
-                    <li><strong>Đơn vị:</strong> VNPT Hà Nội</li>
-                    <li><strong>Địa chỉ:</strong> 75 Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội</li>
-                    <li><strong>Email:</strong> <a href="mailto:thinhdx.hni@vnpt.vn" class="text-primary hover:underline">thinhdx.hni@vnpt.vn</a></li>
-                    <li><strong>Điện thoại:</strong> <a href="tel:0822036382" class="text-primary hover:underline">0822 036 382</a></li>
-                </ul>
+                <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] items-start">
+                    <ul class="space-y-3 text-darkText/80">
+                        <li><strong>Họ tên:</strong> Đỗ Xuân Thịnh</li>
+                        <li><strong>Mã nhân viên:</strong> 002120</li>
+                        <li><strong>Đơn vị:</strong> VNPT Hà Nội</li>
+                        <li><strong>Địa chỉ:</strong> 75 Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội</li>
+                        <li><strong>Email:</strong> <a href="mailto:thinhdx.hni@vnpt.vn" class="text-primary hover:underline">thinhdx.hni@vnpt.vn</a></li>
+                        <li><strong>Điện thoại:</strong> <a href="tel:0822036382" class="text-primary hover:underline">0822 036 382</a></li>
+                    </ul>
+
+                    <figure class="mx-auto w-full max-w-[280px] rounded-[2rem] border border-primary/10 bg-slate-50 p-3 shadow-lg shadow-primary/10">
+                        <Picture
+                            src={employeeCardImage}
+                            alt="Thẻ nhân viên VNPT Hà Nội của Đỗ Xuân Thịnh"
+                            formats={['avif']}
+                            fallbackFormat="webp"
+                            width={560}
+                            widths={[280, 420, 560]}
+                            sizes="(max-width: 1024px) 280px, 320px"
+                            quality={80}
+                            class="w-full h-auto rounded-[1.35rem] object-contain"
+                        />
+                        <figcaption class="mt-4 text-sm leading-relaxed text-darkText/65">
+                            Hình ảnh thẻ nhân viên được đăng tải để khách hàng đối chiếu thông tin xác minh.
+                        </figcaption>
+                    </figure>
+                </div>
             </section>
 
             <section class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-primary/5">

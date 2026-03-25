@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import blogLogoImage from '../../assets/images/logo_web.png';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import FloatingCtas from '../../components/FloatingCtas.astro';
@@ -36,7 +37,7 @@ const structuredData = [
       name: siteConfig.name,
       logo: {
         '@type': 'ImageObject',
-        url: Astro.site ? new URL('/logo-vnpt.png', Astro.site).toString() : '/logo-vnpt.png',
+        url: Astro.site ? new URL(blogLogoImage.src, Astro.site).toString() : blogLogoImage.src,
       },
     },
     mainEntityOfPage: {
