@@ -1,5 +1,6 @@
 ---
 import faviconImage from '../assets/images/logo_web.png';
+import ChatbotWidget from '../components/ChatbotWidget.astro';
 import { getGtagId, getSiteUrl, siteConfig } from '../config/site';
 import { shouldNoIndex, toAbsoluteUrl } from '../lib/seo';
 import '../styles/global.css';
@@ -74,5 +75,6 @@ const ogType = canonicalPath.startsWith('/blog-content/') ? 'article' : 'website
   </head>
   <body class:list={['min-h-screen bg-surface text-darkText antialiased', bodyClass]}>
     <slot />
+    <ChatbotWidget />
   </body>
 </html>

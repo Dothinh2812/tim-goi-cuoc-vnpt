@@ -1,0 +1,83 @@
+---
+import '../styles/chatbot.css';
+---
+
+<div class="chatbot-shell" data-chatbot-root>
+  <button
+    class="chatbot-trigger"
+    type="button"
+    aria-expanded="false"
+    aria-controls="chatbot-panel"
+    data-chatbot-toggle
+  >
+    <span class="chatbot-trigger__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path
+          d="M8 10h8M8 14h5m-7 6 1.39-2.779A9 9 0 1 1 21 10.5 8.5 8.5 0 0 1 12.5 19H6Z"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </svg>
+    </span>
+    <span class="chatbot-trigger__text">
+      <strong>AI Chatbot</strong>
+      <small>Tư vấn nhanh</small>
+    </span>
+  </button>
+
+  <section
+    id="chatbot-panel"
+    class="chatbot-panel"
+    aria-hidden="true"
+    data-chatbot-panel
+  >
+    <header class="chatbot-header">
+      <div>
+        <p class="chatbot-header__title">AI Chatbot</p>
+        <div class="chatbot-status">
+          <span class="chatbot-status__dot" aria-hidden="true"></span>
+          <span>Online</span>
+        </div>
+      </div>
+
+      <div class="chatbot-header__actions">
+        <button class="chatbot-icon-button" type="button" aria-label="Làm mới" data-chatbot-refresh>
+          <svg viewBox="0 0 24 24" fill="none" data-refresh-icon>
+            <path
+              d="M20 11a8 8 0 1 0 2.25 5.5M20 11V4m0 7h-7"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+            />
+          </svg>
+        </button>
+        <button class="chatbot-icon-button" type="button" aria-label="Đóng" data-chatbot-close>
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="chatbot-messages" data-chatbot-messages></div>
+
+    <form class="chatbot-form" data-chatbot-form>
+      <label class="sr-only" for="chatbot-input">Nhập nội dung chat</label>
+      <textarea
+        id="chatbot-input"
+        class="chatbot-input"
+        rows="1"
+        placeholder="Nhập câu hỏi của bạn..."
+        data-chatbot-input
+      ></textarea>
+      <button class="chatbot-send" type="submit" data-chatbot-send>Gửi</button>
+    </form>
+  </section>
+</div>
+
+<script>
+  import '../scripts/chatbot.ts';
+</script>
