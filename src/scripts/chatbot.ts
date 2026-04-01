@@ -60,6 +60,43 @@ function stripLeadDataTag(text: string) {
   return text.replace(LEAD_DATA_PATTERN, '').trim();
 }
 
+function normalizeLeadValue(value: string | null | undefined) {
+  const normalized = value?.trim();
+  return normalized ? normalized : null;
+}
+
+function mergeLeadData(base: LeadData | null, next: Partial<LeadData> | null) {
+  return {
+    name: normalizeLeadValue(base?.name || next?.name || null),
+    phone: normalizeLeadValue(base?.phone || next?.phone || null),
+    email: normalizeLeadValue(base?.email || next?.email || null),
+  };
+}
+
+function extractLeadDataFromText(text: string): Partial<LeadData> | null {
+  const phoneMatch = text.match(/(?:\+?84|0)(?:\d[\s.]?){8,10}/);
+  const emailMatch = text.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+  const nameMatch = text.match(
+    /(?:toi la|tôi là|ten toi la|tên tôi là|em la|em là|minh la|mình là|anh la|anh là|chi la|chị là)\s+([^,.\n]+)/i,
+  );
+
+  const leadData: Partial<LeadData> = {};
+
+  if (nameMatch?.[1]) {
+    leadData.name = nameMatch[1].trim();
+  }
+
+  if (phoneMatch?.[0]) {
+    leadData.phone = phoneMatch[0].replace(/[^\d+]/g, '');
+  }
+
+  if (emailMatch?.[0]) {
+    leadData.email = emailMatch[0].trim();
+  }
+
+  return leadData.name || leadData.phone || leadData.email ? leadData : null;
+}
+
 function formatChatHistory(chatHistoryArray: ChatMessage[]) {
   return chatHistoryArray
     .map((message) => {
@@ -172,6 +209,7 @@ async function initChatbot() {
   let messages: ChatMessage[] = [];
   let systemPrompt = FALLBACK_SYSTEM_PROMPT;
   let typingMessage: HTMLElement | null = null;
+  let collectedLeadData: LeadData | null = null;
 
   marked.setOptions({
     breaks: true,
@@ -280,6 +318,7 @@ async function initChatbot() {
     const safeUserHtml = escapeHtml(content).replace(/\n/g, '<br />');
     chatMessages.appendChild(createMessageElement('user', safeUserHtml));
     messages.push({ role: 'user', content });
+    collectedLeadData = mergeLeadData(collectedLeadData, extractLeadDataFromText(content));
     input.value = '';
     autoResize();
     sendButton.disabled = true;
@@ -309,7 +348,28 @@ async function initChatbot() {
         { role: 'assistant', content: payload.content },
       ]);
 
+      const aiLeadData = payload.content.includes('||LEAD_DATA:')
+        ? (() => {
+            const match = payload.content.match(LEAD_DATA_PATTERN);
+            if (!match?.[1]) {
+              return null;
+            }
+
+            try {
+              return JSON.parse(match[1]) as Partial<LeadData>;
+            } catch {
+              return null;
+            }
+          })()
+        : null;
+
+      collectedLeadData = mergeLeadData(collectedLeadData, aiLeadData);
       messages.push({ role: 'assistant', content: assistantResponse });
+
+      if (collectedLeadData?.name || collectedLeadData?.phone || collectedLeadData?.email) {
+        void sendLeadToGoogleSheets(collectedLeadData, formatChatHistory(messages));
+      }
+
       const html = marked.parse(assistantResponse) as string;
       removeTyping();
       chatMessages.appendChild(createMessageElement('assistant', html));
