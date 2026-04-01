@@ -5,6 +5,16 @@ type ChatMessage = {
   content: string;
 };
 
+type LeadData = {
+  name: string | null;
+  phone: string | null;
+  email: string | null;
+};
+
+const GOOGLE_SCRIPT_URL = import.meta.env.PUBLIC_GOOGLE_SCRIPT_URL || '';
+const AI_CHAT_SESSION_ID = `session_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+const LEAD_DATA_PATTERN = /\|\|LEAD_DATA:\s*(\{.*?\})\s*\|\|/s;
+
 const DEFAULT_GREETING = `
 **Xin chào!** Tôi là trợ lý AI của chuyên gia Nguyễn Văn A.
 
@@ -44,6 +54,100 @@ function escapeHtml(text: string) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
+}
+
+function stripLeadDataTag(text: string) {
+  return text.replace(LEAD_DATA_PATTERN, '').trim();
+}
+
+function formatChatHistory(chatHistoryArray: ChatMessage[]) {
+  return chatHistoryArray
+    .map((message) => {
+      const role = message.role === 'user' ? 'Khach' : 'AI';
+      const content = stripLeadDataTag(message.content);
+      return `${role}: ${content}`;
+    })
+    .join('\n\n');
+}
+
+async function sendLeadToGoogleSheets(leadData: LeadData, chatHistoryText: string) {
+  if (!GOOGLE_SCRIPT_URL) {
+    return;
+  }
+
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8',
+      },
+      body: JSON.stringify({
+        name: leadData.name || '',
+        phone: leadData.phone || '',
+        email: leadData.email || '',
+        source: window.location.href,
+        sessionId: AI_CHAT_SESSION_ID,
+        chatHistory: chatHistoryText,
+        timestamp: new Date().toLocaleString('vi-VN'),
+      }),
+    });
+  } catch (error) {
+    console.warn('Khong gui duoc du lieu lead len Google Sheets.', error);
+  }
+}
+
+function processAIResponse(aiResponse: string, chatHistoryArray: ChatMessage[]) {
+  let cleanResponse = aiResponse;
+  let leadData: LeadData | null = null;
+
+  if (aiResponse.includes('||LEAD_DATA:')) {
+    const match = aiResponse.match(LEAD_DATA_PATTERN);
+
+    if (match?.[1]) {
+      try {
+        const parsedLeadData = JSON.parse(match[1]) as Partial<LeadData>;
+        leadData = {
+          name: parsedLeadData.name || null,
+          phone: parsedLeadData.phone || null,
+          email: parsedLeadData.email || null,
+        };
+      } catch (error) {
+        console.error('Loi parse LEAD_DATA tu phan hoi AI.', error);
+      }
+    }
+
+    cleanResponse = stripLeadDataTag(aiResponse);
+  }
+
+  const formattedHistory = formatChatHistory(
+    leadData ? [...chatHistoryArray.slice(0, -1), { role: 'assistant', content: cleanResponse }] : chatHistoryArray,
+  );
+
+  if (leadData && (leadData.name || leadData.phone || leadData.email)) {
+    void sendLeadToGoogleSheets(leadData, formattedHistory);
+  }
+
+  return cleanResponse;
+}
+
+async function parseApiResponse(response: Response) {
+  const contentType = response.headers.get('content-type') || '';
+  const rawText = await response.text();
+
+  if (contentType.includes('application/json')) {
+    try {
+      return JSON.parse(rawText) as { content?: string; error?: string };
+    } catch {
+      return { error: 'Phan hoi JSON tu API chatbot khong hop le.' };
+    }
+  }
+
+  return {
+    error: response.ok
+      ? 'API chatbot tra ve du lieu khong dung dinh dang JSON.'
+      : `API chatbot tra ve HTML hoac trang loi thay vi JSON. Chi tiet: ${rawText.slice(0, 120)}`,
+  };
 }
 
 async function initChatbot() {
@@ -194,14 +298,19 @@ async function initChatbot() {
         }),
       });
 
-      const payload = (await response.json()) as { content?: string; error?: string };
+      const payload = await parseApiResponse(response);
 
       if (!response.ok || !payload.content) {
         throw new Error(payload.error || 'Khong the lay phan hoi tu AI.');
       }
 
-      messages.push({ role: 'assistant', content: payload.content });
-      const html = marked.parse(payload.content) as string;
+      const assistantResponse = processAIResponse(payload.content, [
+        ...messages,
+        { role: 'assistant', content: payload.content },
+      ]);
+
+      messages.push({ role: 'assistant', content: assistantResponse });
+      const html = marked.parse(assistantResponse) as string;
       removeTyping();
       chatMessages.appendChild(createMessageElement('assistant', html));
     } catch (error) {
