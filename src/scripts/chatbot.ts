@@ -104,6 +104,48 @@ function extractLeadDataFromText(text: string): Partial<LeadData> | null {
   return leadData.name || leadData.phone || leadData.email ? leadData : null;
 }
 
+function inferInterestFromConversation(chatHistoryArray: ChatMessage[]) {
+  const combinedText = chatHistoryArray
+    .filter((message) => message.role === 'user')
+    .map((message) => message.content.toLowerCase())
+    .join('\n');
+
+  if (/k89|agentic ai/.test(combinedText)) {
+    return 'Khóa học K89 - Agentic AI';
+  }
+
+  if (/n8n/.test(combinedText)) {
+    return 'Giải pháp N8N AI';
+  }
+
+  if (/mcp/.test(combinedText)) {
+    return 'Giải pháp MCP server';
+  }
+
+  if (/branding/.test(combinedText)) {
+    return 'Đào tạo AI branding';
+  }
+
+  return null;
+}
+
+function inferIntentLevelFromConversation(chatHistoryArray: ChatMessage[]) {
+  const combinedText = chatHistoryArray
+    .filter((message) => message.role === 'user')
+    .map((message) => message.content.toLowerCase())
+    .join('\n');
+
+  if (/(dang ky ngay|đăng ký ngay|lien he som|liên hệ sớm|goi ngay|gọi ngay|mua ngay|bao gia|báo giá)/.test(combinedText)) {
+    return 'hot' as const;
+  }
+
+  if (/(muon tim hieu|muốn tìm hiểu|xin them thong tin|xin thêm thông tin|tu van|tư vấn|hoc phi|học phí)/.test(combinedText)) {
+    return 'warm' as const;
+  }
+
+  return 'cold' as const;
+}
+
 function formatChatHistory(chatHistoryArray: ChatMessage[]) {
   return chatHistoryArray
     .map((message) => {
@@ -360,6 +402,10 @@ async function initChatbot() {
 
       collectedLeadData = mergeLeadData(collectedLeadData, aiLeadData);
       messages.push({ role: 'assistant', content: assistantResponse });
+      collectedLeadData = mergeLeadData(collectedLeadData, {
+        interest: collectedLeadData?.interest || inferInterestFromConversation(messages),
+        intent_level: collectedLeadData?.intent_level || inferIntentLevelFromConversation(messages),
+      });
 
       if (
         collectedLeadData?.name ||
