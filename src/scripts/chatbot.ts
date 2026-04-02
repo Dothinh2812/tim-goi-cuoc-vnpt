@@ -145,40 +145,19 @@ async function sendLeadToGoogleSheets(leadData: LeadData, chatHistoryText: strin
 
 function processAIResponse(aiResponse: string, chatHistoryArray: ChatMessage[]) {
   let cleanResponse = aiResponse;
-  let leadData: LeadData | null = null;
 
   if (aiResponse.includes('||LEAD_DATA:')) {
     const match = aiResponse.match(LEAD_DATA_PATTERN);
 
     if (match?.[1]) {
       try {
-        const parsedLeadData = JSON.parse(match[1]) as Partial<LeadData>;
-        leadData = {
-          name: parsedLeadData.name || null,
-          phone: parsedLeadData.phone || null,
-          email: parsedLeadData.email || null,
-          interest: parsedLeadData.interest || null,
-          intent_level:
-            parsedLeadData.intent_level === 'hot' ||
-            parsedLeadData.intent_level === 'warm' ||
-            parsedLeadData.intent_level === 'cold'
-              ? parsedLeadData.intent_level
-              : null,
-        };
+        JSON.parse(match[1]);
       } catch (error) {
         console.error('Loi parse LEAD_DATA tu phan hoi AI.', error);
       }
     }
 
     cleanResponse = stripLeadDataTag(aiResponse);
-  }
-
-  const formattedHistory = formatChatHistory(
-    leadData ? [...chatHistoryArray.slice(0, -1), { role: 'assistant', content: cleanResponse }] : chatHistoryArray,
-  );
-
-  if (leadData && (leadData.name || leadData.phone || leadData.email || leadData.interest || leadData.intent_level)) {
-    void sendLeadToGoogleSheets(leadData, formattedHistory);
   }
 
   return cleanResponse;
