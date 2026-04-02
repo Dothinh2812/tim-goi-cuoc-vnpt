@@ -104,11 +104,20 @@ function extractLeadDataFromText(text: string): Partial<LeadData> | null {
   return leadData.name || leadData.phone || leadData.email ? leadData : null;
 }
 
+function normalizeForSearch(text: string) {
+  return text
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase();
+}
+
 function inferInterestFromConversation(chatHistoryArray: ChatMessage[]) {
-  const combinedText = chatHistoryArray
+  const combinedText = normalizeForSearch(
+    chatHistoryArray
     .filter((message) => message.role === 'user')
     .map((message) => message.content.toLowerCase())
-    .join('\n');
+    .join('\n'),
+  );
 
   if (/k89|agentic ai/.test(combinedText)) {
     return 'Khóa học K89 - Agentic AI';
@@ -130,16 +139,18 @@ function inferInterestFromConversation(chatHistoryArray: ChatMessage[]) {
 }
 
 function inferIntentLevelFromConversation(chatHistoryArray: ChatMessage[]) {
-  const combinedText = chatHistoryArray
+  const combinedText = normalizeForSearch(
+    chatHistoryArray
     .filter((message) => message.role === 'user')
     .map((message) => message.content.toLowerCase())
-    .join('\n');
+    .join('\n'),
+  );
 
-  if (/(dang ky ngay|đăng ký ngay|lien he som|liên hệ sớm|goi ngay|gọi ngay|mua ngay|bao gia|báo giá)/.test(combinedText)) {
+  if (/(dang ky ngay|lien he som|goi ngay|mua ngay|bao gia)/.test(combinedText)) {
     return 'hot' as const;
   }
 
-  if (/(muon tim hieu|muốn tìm hiểu|xin them thong tin|xin thêm thông tin|tu van|tư vấn|hoc phi|học phí)/.test(combinedText)) {
+  if (/(muon tim hieu|xin them thong tin|tu van|hoc phi)/.test(combinedText)) {
     return 'warm' as const;
   }
 
@@ -356,6 +367,10 @@ async function initChatbot() {
     chatMessages.appendChild(createMessageElement('user', safeUserHtml));
     messages.push({ role: 'user', content });
     collectedLeadData = mergeLeadData(collectedLeadData, extractLeadDataFromText(content));
+    collectedLeadData = mergeLeadData(collectedLeadData, {
+      interest: inferInterestFromConversation(messages),
+      intent_level: inferIntentLevelFromConversation(messages),
+    });
     input.value = '';
     autoResize();
     sendButton.disabled = true;
