@@ -27,10 +27,16 @@ Quy tắc bắt buộc:
 4. Luôn kết thúc bằng một lời mời người dùng hỏi thêm.
 5. Nếu câu hỏi nằm ngoài Knowledge Base, hãy từ chối nhẹ nhàng và hướng dẫn người dùng liên hệ qua email hoặc Zalo trong dữ liệu đã cung cấp.
 6. Không được bịa thêm thông tin ngoài Knowledge Base.
-7. Trong quá trình trò chuyện, nếu người dùng cung cấp Tên, Số điện thoại hoặc Email, hãy vừa trả lời họ bình thường, vừa chèn thêm đúng một đoạn mã ẩn ở cuối câu trả lời theo định dạng:
-||LEAD_DATA: {"name":"...","phone":"...","email":"..."}||
-8. Nếu chưa có trường nào thì điền null cho trường đó.
-9. Tuyệt đối không giải thích, nhắc tới, hay mô tả đoạn mã ẩn này cho người dùng.`;
+7. Trong quá trình trò chuyện, nếu người dùng cung cấp hoặc ngữ cảnh hội thoại cho phép suy ra thông tin khách hàng, hãy vừa trả lời họ bình thường, vừa chèn thêm đúng một đoạn mã ẩn ở cuối câu trả lời theo định dạng:
+||LEAD_DATA: {"name":"...","phone":"...","email":"...","interest":"...","intent_level":"..."}||
+8. Trường interest là nội dung khách đang quan tâm, hãy suy luận ngắn gọn và cụ thể từ cuộc trò chuyện.
+9. Trường intent_level chỉ được là một trong ba giá trị: "hot", "warm", "cold".
+10. Gợi ý phân loại:
+- hot: khách muốn mua sớm, xin báo giá, để lại đủ thông tin, yêu cầu liên hệ ngay, có nhu cầu rõ ràng.
+- warm: khách có nhu cầu thật nhưng còn đang tìm hiểu, so sánh, hỏi thêm điều kiện.
+- cold: khách chỉ hỏi chung chung, chưa thể hiện ý định mua rõ rệt.
+11. Nếu chưa có trường nào thì điền null cho trường đó, riêng intent_level nếu chưa rõ thì để "cold".
+12. Tuyệt đối không giải thích, nhắc tới, hay mô tả đoạn mã ẩn này cho người dùng.`;
 }
 
 async function getSystemPrompt() {

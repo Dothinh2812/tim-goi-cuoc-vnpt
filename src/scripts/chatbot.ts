@@ -9,6 +9,8 @@ type LeadData = {
   name: string | null;
   phone: string | null;
   email: string | null;
+  interest: string | null;
+  intent_level: 'hot' | 'warm' | 'cold' | null;
 };
 
 const GOOGLE_SCRIPT_URL = import.meta.env.PUBLIC_GOOGLE_SCRIPT_URL || '';
@@ -66,10 +68,15 @@ function normalizeLeadValue(value: string | null | undefined) {
 }
 
 function mergeLeadData(base: LeadData | null, next: Partial<LeadData> | null) {
+  const intentLevel = next?.intent_level || base?.intent_level || null;
+
   return {
     name: normalizeLeadValue(base?.name || next?.name || null),
     phone: normalizeLeadValue(base?.phone || next?.phone || null),
     email: normalizeLeadValue(base?.email || next?.email || null),
+    interest: normalizeLeadValue(next?.interest || base?.interest || null),
+    intent_level:
+      intentLevel === 'hot' || intentLevel === 'warm' || intentLevel === 'cold' ? intentLevel : null,
   };
 }
 
@@ -123,6 +130,8 @@ async function sendLeadToGoogleSheets(leadData: LeadData, chatHistoryText: strin
         name: leadData.name || '',
         phone: leadData.phone || '',
         email: leadData.email || '',
+        interest: leadData.interest || '',
+        intent_level: leadData.intent_level || '',
         source: window.location.href,
         sessionId: AI_CHAT_SESSION_ID,
         chatHistory: chatHistoryText,
@@ -148,6 +157,13 @@ function processAIResponse(aiResponse: string, chatHistoryArray: ChatMessage[]) 
           name: parsedLeadData.name || null,
           phone: parsedLeadData.phone || null,
           email: parsedLeadData.email || null,
+          interest: parsedLeadData.interest || null,
+          intent_level:
+            parsedLeadData.intent_level === 'hot' ||
+            parsedLeadData.intent_level === 'warm' ||
+            parsedLeadData.intent_level === 'cold'
+              ? parsedLeadData.intent_level
+              : null,
         };
       } catch (error) {
         console.error('Loi parse LEAD_DATA tu phan hoi AI.', error);
@@ -161,7 +177,7 @@ function processAIResponse(aiResponse: string, chatHistoryArray: ChatMessage[]) 
     leadData ? [...chatHistoryArray.slice(0, -1), { role: 'assistant', content: cleanResponse }] : chatHistoryArray,
   );
 
-  if (leadData && (leadData.name || leadData.phone || leadData.email)) {
+  if (leadData && (leadData.name || leadData.phone || leadData.email || leadData.interest || leadData.intent_level)) {
     void sendLeadToGoogleSheets(leadData, formattedHistory);
   }
 
@@ -366,7 +382,13 @@ async function initChatbot() {
       collectedLeadData = mergeLeadData(collectedLeadData, aiLeadData);
       messages.push({ role: 'assistant', content: assistantResponse });
 
-      if (collectedLeadData?.name || collectedLeadData?.phone || collectedLeadData?.email) {
+      if (
+        collectedLeadData?.name ||
+        collectedLeadData?.phone ||
+        collectedLeadData?.email ||
+        collectedLeadData?.interest ||
+        collectedLeadData?.intent_level
+      ) {
         void sendLeadToGoogleSheets(collectedLeadData, formatChatHistory(messages));
       }
 
